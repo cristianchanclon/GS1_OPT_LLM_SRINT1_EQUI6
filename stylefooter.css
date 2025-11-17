@@ -1,0 +1,20 @@
+p {
+    max-width: 700px;
+    text-align: center;
+    margin: auto;
+    margin-bottom: 3rem;
+}
+
+footer {
+    width: 100%;
+    bottom: 0;
+    height: 50px;
+    position: fixed;
+    box-shadow: 1px 1px 5px #000;
+    background-color: #222;
+    color: #eee;
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+}
