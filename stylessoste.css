@@ -24,15 +24,14 @@
         flex-direction: column;
       }
 
-      /* HEADER */
-  header {
-    position: sticky;
-    top: 0;
-    background-color: #1b4d3e;
-    color: white;
-    z-index: 1000;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-}
+      header {
+        position: sticky;
+        top: 0;
+        background-color: #1b4d3e;
+        color: white;
+        z-index: 1000;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      }
 
       nav {
         display: flex;
@@ -41,13 +40,13 @@
         padding: 0.8rem 2rem;
       }
 
-      .nav-left {
+      .logo {
         display: flex;
         align-items: center;
         gap: 10px;
       }
 
-      .nav-left img {
+      .logo img {
         height: 45px;
       }
 
@@ -70,7 +69,6 @@
         color: var(--color-accent);
       }
 
-      /* MAIN */
       main {
         flex: 1;
         display: flex;
@@ -88,6 +86,13 @@
         max-width: 1100px;
         text-align: left;
         font-weight: 700;
+      }
+      
+      p {
+        max-width: 700px;
+        text-align: center;
+        margin: auto;
+        margin-bottom: 3rem;
       }
 
       .contenidor {
@@ -151,64 +156,20 @@
         color: var(--color-principal);
       }
 
-      /* FOOTER */
-    footer {
-    width: 100%;
-    bottom: 0;
-    height: 50px;
-    position: fixed;
-    box-shadow: 1px 1px 5px #000;
-    background-color: #222;
-    color: #eee;
-    text-align: center;
-    padding: 1rem;
-    font-size: 0.9rem;
-    flex-shrink: 0;
-}
-
-      /* FLECHAS LATERALES MODERNAS */
-      .flecha {
+      footer {
+        width: 100%;
+        bottom: 0;
+        height: 50px;
         position: fixed;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 55px;
-        height: 55px;
-        border-radius: 50%;
-        background: rgba(255, 255, 255, 0.8);
-        backdrop-filter: blur(6px);
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-decoration: none;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        z-index: 1000;
+        box-shadow: 1px 1px 5px #000;
+        background-color: #222;
+        color: #eee;
+        text-align: center;
+        padding: 1rem;
+        font-size: 0.9rem;
+        flex-shrink: 0;
       }
 
-      .flecha svg {
-        width: 24px;
-        height: 24px;
-        fill: var(--color-principal);
-        transition: fill 0.3s ease;
-      }
-
-      .flecha:hover {
-        background: var(--color-accent);
-        transform: translateY(-50%) scale(1.1);
-      }
-
-      .flecha:hover svg {
-        fill: white;
-      }
-
-      .flecha.izquierda {
-        left: 1.5rem;
-      }
-
-      .flecha.derecha {
-        right: 1.5rem;
-      }
 
       @media (max-width: 900px) {
         .contenidor,
@@ -219,16 +180,6 @@
 
         .bloc-inferior img {
           width: 80%;
-        }
-
-        .flecha {
-          width: 45px;
-          height: 45px;
-        }
-
-        .flecha svg {
-          width: 20px;
-          height: 20px;
         }
 
         main {
