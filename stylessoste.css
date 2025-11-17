@@ -25,12 +25,14 @@
       }
 
       /* HEADER */
-      header {
-        background-color: var(--color-principal);
-        color: white;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-        flex-shrink: 0;
-      }
+  header {
+    position: sticky;
+    top: 0;
+    background-color: #1b4d3e;
+    color: white;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
 
       nav {
         display: flex;
@@ -150,14 +152,19 @@
       }
 
       /* FOOTER */
-      footer {
-        background-color: #222;
-        color: #eee;
-        text-align: center;
-        padding: 0.7rem;
-        font-size: 0.9rem;
-        flex-shrink: 0;
-      }
+    footer {
+    width: 100%;
+    bottom: 0;
+    height: 50px;
+    position: fixed;
+    box-shadow: 1px 1px 5px #000;
+    background-color: #222;
+    color: #eee;
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+}
 
       /* FLECHAS LATERALES MODERNAS */
       .flecha {
