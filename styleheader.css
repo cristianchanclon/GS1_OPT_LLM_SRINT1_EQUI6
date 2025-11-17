@@ -1,0 +1,18 @@
+header {
+    position: sticky;
+    top: 0;
+    background-color: #1b4d3e;
+    color: white;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo img {
+    height: 45px;
+}
