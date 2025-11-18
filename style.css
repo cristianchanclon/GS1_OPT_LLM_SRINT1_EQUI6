@@ -1,126 +1,250 @@
+:root {
+    --color-principal: #1b4d3e;
+    --color-accent: #00c389;
+    --color-fons: #f6f6f6;
+    --color-text: #333;
+    --color-tarjeta: #ffffff;
+    --color-hover: #f7ce69;
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
+    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
 * {
     box-sizing: border-box;
 }
 
+html,
 body {
+    height: 100%;
     margin: 0;
-    font-family: "Segoe UI", Arial, sans-serif;
-    background-color: var(--color-fons);
+    overflow: hidden;
+}
+
+body {
+    font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+    background: linear-gradient(135deg, #f6f6f6 0%, #e8e8e8 100%);
     color: var(--color-text);
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    line-height: 1.6;
 }
 
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.8rem 2rem;
-}
-
-nav ul {
-    list-style: none;
-    display: flex;
-    gap: 1.2rem;
-    margin: 0;
-    padding: 0;
-}
-
-nav a {
-    color: white;
-    text-decoration: none;
-    font-weight: 600;
-    transition: color 0.3s;
-}
-
-nav a:hover {
-    color: var(--color-accent);
-}
+/* Los estilos de navegación del header están en styleheader.css para mantener consistencia */
 
 main {
     flex: 1;
-    padding: 3rem 1.5rem;
+    overflow: hidden;
+    padding: 2rem 1.5rem;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+    min-height: 0;
 }
 
 #inici {
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
+    padding: 1.5rem 1rem;
+    background: none;
+    border-radius: 0;
+    max-width: 950px;
+    width: 100%;
+    box-shadow: none;
+    border: none;
+    position: relative;
+    flex-shrink: 0;
 }
 
 h1 {
     font-size: 2.5rem;
     color: var(--color-principal);
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
     text-align: center;
+    font-weight: 800;
+    letter-spacing: -0.6px;
+    line-height: 1.2;
+    position: relative;
+    z-index: 1;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
-p {
-    max-width: 700px;
+#inici p {
+    max-width: 750px;
     text-align: center;
-    margin: auto;
-    margin-bottom: 3rem;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    color: #444;
+    line-height: 1.6;
+    position: relative;
+    z-index: 1;
+    font-weight: 400;
+    letter-spacing: 0.1px;
 }
 
 .contenedor-flex {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 2rem;
+    gap: 1.5rem;
     width: 100%;
     max-width: 1200px;
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+    align-items: center;
 }
 
 .tarjeta {
-    background-color: #fff;
-    border-radius: 12px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    flex: 1 1 280px;
-    max-width: 320px;
+    background-color: var(--color-tarjeta);
+    border-radius: 16px;
+    box-shadow: var(--shadow-md);
+    flex: 1 1 300px;
+    max-width: 360px;
     text-align: center;
-    padding: 1.5rem;
-    transition: transform 0.2s ease-in-out, box-shadow 0.2s;
+    padding: 0;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     text-decoration: none;
     color: inherit;
+    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    position: relative;
+}
+
+.tarjeta::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--color-principal), var(--color-accent));
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
 .tarjeta:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: var(--shadow-lg);
+}
+
+.tarjeta:hover::before {
+    opacity: 1;
+}
+
+.tarjeta article {
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    position: relative;
+    z-index: 1;
 }
 
 .tarjeta img {
     width: 100%;
-    height: 180px;
+    height: 200px;
     object-fit: cover;
-    border-radius: 10px;
-    margin-bottom: 1rem;
+    border-radius: 0;
+    margin: 0;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.tarjeta:hover img {
+    transform: scale(1.05);
 }
 
 .tarjeta h2 {
     color: var(--color-principal);
-    margin: 0.5rem 0;
+    margin: 1.25rem 0 0.75rem 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.3px;
 }
 
 .tarjeta p {
-    font-size: 0.95rem;
-    color: #555;
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.6;
+    margin: 0;
+    flex-grow: 1;
+}
+
+/* Efecto de overlay en hover para las tarjetas */
+.tarjeta::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(27, 77, 62, 0.03) 0%, rgba(0, 195, 137, 0.03) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.tarjeta:hover::after {
+    opacity: 1;
 }
 
 @media (max-width: 768px) {
-    nav {
-        flex-direction: column;
+    main {
+        padding: 2.5rem 1rem;
+    }
+
+    h1 {
+        font-size: 2.25rem;
+    }
+
+    #inici {
+        margin-bottom: 3rem;
+        padding: 1.5rem 1rem;
+    }
+
+    #inici p {
+        font-size: 1rem;
     }
 
     .contenedor-flex {
         flex-direction: column;
         align-items: center;
+        gap: 2rem;
+    }
+
+    .tarjeta {
+        max-width: 100%;
+        width: 100%;
     }
 
     .tarjeta img {
-        height: 150px;
+        height: 180px;
+    }
+
+    .tarjeta:hover {
+        transform: translateY(-4px) scale(1.01);
     }
 }
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.875rem;
+    }
+
+    main {
+        padding: 2rem 1rem;
+    }
+}
+
+#header-container nav a[href="index.html"] {
+  
+  pointer-events: none !important;
+  color: var(--color-accent) !important;
+  font-weight: bold !important;
+  }

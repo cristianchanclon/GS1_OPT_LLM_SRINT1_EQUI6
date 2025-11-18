@@ -18,3 +18,6 @@ footer {
     font-size: 0.9rem;
     flex-shrink: 0;
 }
+.bloc-inferior {
+  margin-bottom: 2rem; /* o prueba con 3rem para más separación */
+}
