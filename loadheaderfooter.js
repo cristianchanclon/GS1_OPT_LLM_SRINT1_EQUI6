@@ -7,39 +7,52 @@ async function loadHTML(containerId, filePath) {
 
     if (containerId === "header-container") {
       customizeHeaderTitle();
+      hideActiveNavLink();
     }
   } catch (error) {
     console.error(error);
   }
 }
 
+function normalizePath(value) {
+  return value
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase();
+}
+
 function customizeHeaderTitle() {
   const headerTitle = document.querySelector("#header-container .logo strong");
   if (!headerTitle) return;
 
-  const currentPath = decodeURIComponent(window.location.pathname).toLowerCase();
+  const currentPath = decodeURIComponent(window.location.pathname);
+  const normalizedPath = normalizePath(currentPath);
   const isDigitalitzacio =
-    currentPath.includes("digitalització.html") ||
-    currentPath.includes("digitalitzacio.html");
+    normalizedPath.includes("digitalitzacio.html") ||
+    normalizedPath.endsWith("digitalitzacio");
 
   headerTitle.textContent = isDigitalitzacio ? "Digitalització" : "Montsià30";
+}
 
-  // Desactivar enlace a Digitalització si estás en esa página
-  if (isDigitalitzacio) {
-    const digitalitzacioLinks = document.querySelectorAll(
-      '#header-container nav a[href*="Digitalització"], #header-container nav a[href*="digitalització"]'
-    );
-    digitalitzacioLinks.forEach((link) => {
-      link.style.pointerEvents = "none";
-      link.style.cursor = "default";
-      link.style.opacity = "0.8";
-      link.addEventListener("click", (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        return false;
-      });
-    });
-  }
+function hideActiveNavLink() {
+  const currentFile =
+    decodeURIComponent(window.location.pathname).split("/").pop() ||
+    "index.html";
+  const normalizedCurrent = normalizePath(currentFile || "index.html");
+
+  const navLinks = document.querySelectorAll(
+    '#header-container nav a[data-page]'
+  );
+
+  navLinks.forEach((link) => {
+    const target = normalizePath(link.dataset.page || "");
+    if (target && target === normalizedCurrent) {
+      const parentLi = link.closest("li");
+      if (parentLi) {
+        parentLi.style.display = "none";
+      }
+    }
+  });
 }
 
 document.addEventListener("DOMContentLoaded", () => {

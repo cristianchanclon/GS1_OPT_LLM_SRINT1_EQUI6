@@ -18,7 +18,7 @@ html,
 body {
   height: 100%;
   margin: 0;
-  overflow: hidden;
+  overflow: auto;
 }
 
 body {
@@ -48,11 +48,12 @@ footer {
 
 main {
   flex: 1;
-  overflow: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  padding: 1.5rem 2rem 5rem 2rem;
+  padding: 2rem 1.5rem 4rem 1.5rem;
   background: linear-gradient(135deg, #f6f6f6 0%, #e8e8e8 100%);
   min-height: 0;
 }
@@ -104,15 +105,14 @@ p {
 .outer {
   max-width: var(--maxw);
   width: 100%;
-  height: 100%;
   margin: 0 auto;
   border: none;
   border-radius: 0;
   background: none;
-  overflow: hidden;
+  overflow: visible;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   justify-content: flex-start;
   padding: 0;
 }
@@ -120,17 +120,17 @@ p {
 .inner {
   width: 100%;
   max-width: 1100px;
-  margin: 0 auto;
-  height: 100%;
+  margin: 0 auto 2rem auto;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  gap: 1.5rem;
+  overflow: visible;
 }
 
 .contenidor {
   display: grid;
-  grid-template-columns: 1fr 400px;
-  gap: 1.75rem;
+  grid-template-columns: minmax(0, 1fr) 360px;
+  gap: 1.5rem;
   align-items: stretch;
   width: 100%;
   max-width: 1100px;
@@ -139,7 +139,7 @@ p {
 
 .text-box {
   background: var(--color-card);
-  padding: 1.75rem;
+  padding: 1.5rem;
   border-radius: 12px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
   border-left: 6px solid var(--color-accent);
@@ -159,13 +159,13 @@ p {
 
 .info-graf {
   background: var(--color-card);
-  padding: 1.5rem;
+  padding: 1.25rem;
   border-radius: 12px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  gap: 0.5rem;
 }
 
 .row {
@@ -179,19 +179,33 @@ p {
   margin-bottom: 0;
 }
 
+.row .bar {
+  flex: 1;
+  background: #dcdcdc;
+  height: 14px;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.row .bar .fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-accent), var(--color-primary));
+  border-radius: 4px;
+}
+
 .bloc-inferior {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.75rem;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 1.5rem;
   width: 100%;
   max-width: 1100px;
-  margin: 0 auto;
+  margin: 0 auto 1.5rem auto;
 }
 
 .bloc-inferior img {
   width: 100%;
   height: auto;
-  max-height: 300px;
+  max-height: 260px;
   object-fit: cover;
   border-radius: 12px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
@@ -212,9 +226,8 @@ p {
   background: var(--color-card);
   border-left: 6px solid var(--color-accent);
   border-radius: 12px;
-  padding: 1.75rem;
+  padding: 1.5rem;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-  height: 100%;
   transition: box-shadow 0.3s ease;
 }
 
@@ -292,17 +305,6 @@ p {
   }
 }
 
-/* ENLACE ACTIVO EN EL HEADER */
-#header-container nav a[href="Sostenibilitat.html"],
-#header-container nav a[href="sostenibilitat.html"],
-#header-container nav a[href*="Sostenibilitat"],
-#header-container nav a[href*="sostenibilitat"] {
-  pointer-events: none !important;
-  color: var(--color-accent) !important;
-  font-weight: bold !important;
-  cursor: default !important;
-  opacity: 0.8;
-}
 
   /* === FORMULARIS A L'ESPAI SOSTENIBILITAT === */
 .formularis {

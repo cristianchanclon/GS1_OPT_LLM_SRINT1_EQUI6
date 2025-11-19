@@ -21,7 +21,7 @@ html,
 body {
   height: 100%;
   margin: 0;
-  overflow: hidden; /* ❗ evita scroll */
+  overflow: auto;
 }
 
 body {
@@ -51,11 +51,12 @@ footer {
 /* MAIN SIN SCROLL, AJUSTADO ENTRE HEADER Y FOOTER */
 main {
   flex: 1;
-  overflow: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  padding: 1.5rem 2rem 5rem 2rem;
+  padding: 2rem 1.5rem 4rem 1.5rem;
   background: linear-gradient(135deg, #f6f6f6 0%, #e8e8e8 100%);
   min-height: 0;
 }
@@ -107,11 +108,10 @@ main {
 .inner {
   width: 100%;
   max-width: 1100px;
-  margin: 0 auto;
-  height: 100%;
+  margin: 0 auto 2rem auto;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  gap: 1.5rem;
 }
 
 /* TIPOGRAFÍA HOMOGÉNEA */
@@ -137,23 +137,22 @@ main {
   grid-template-columns: 1fr 400px;
   gap: 1.75rem;
   align-items: stretch;
-  flex: 1;
+  width: 100%;
   min-height: 0;
-  overflow: visible;
 }
 
 .article-wrap {
   border: none;
-  background: #fff;
+  background: var(--color-card);
   padding: 1.75rem;
   border-radius: 12px;
   position: relative;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
-  height: 100%;
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  min-height: 0;
 }
 
 .article-wrap:hover {
@@ -465,14 +464,3 @@ main {
   }
 }
 
-/* ENLACE ACTIVO EN EL HEADER - Desactivar enlace a Digitalització cuando estás en esa página */
-#header-container nav a[href="digitalització.html"],
-#header-container nav a[href="Digitalització.html"],
-#header-container nav a[href*="Digitalització"],
-#header-container nav a[href*="digitalització"] {
-  pointer-events: none !important;
-  color: var(--orange) !important;
-  font-weight: bold !important;
-  cursor: default !important;
-  opacity: 0.8;
-}

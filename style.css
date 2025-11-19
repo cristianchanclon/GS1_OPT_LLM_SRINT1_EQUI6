@@ -241,10 +241,3 @@ h1 {
         padding: 2rem 1rem;
     }
 }
-
-#header-container nav a[href="index.html"] {
-  
-  pointer-events: none !important;
-  color: var(--color-accent) !important;
-  font-weight: bold !important;
-  }
