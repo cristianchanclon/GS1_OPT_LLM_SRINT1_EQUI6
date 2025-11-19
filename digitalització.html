@@ -7,6 +7,7 @@
 
 <link rel="icon" type="image/png" href="montsitech.png" />
 <link rel="stylesheet" href="stylesdigi.css">
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
 
 </head>
 <body>
@@ -14,47 +15,343 @@
 
 
   <main>
-    <div class="outer">
-      <div class="inner">
-        <div class="badge">EINES PER A LA DIGITALITZACIÓ: AVANTATGES I KITS DIGITALS</div>
+    <div class="main-content" id="main-content">
+      <div class="outer">
+        <div class="inner">
+          <div class="badge">EINES PER A LA DIGITALITZACIÓ: AVANTATGES I KITS DIGITALS</div>
 
-        <div class="grid">
-          <div class="article-wrap">
-            <div class="article-accent" aria-hidden="true"></div>
-            <div class="article">
-              <h2>Eines digitals per al comerç de proximitat</h2>
-              <div class="article-content">
-                <div class="article-text">
-                  <p>El comerç de proximitat es clau en la vida de les nostres ciutats haurà d'afrontar els nous desafiaments de la modernització i la innovació sense renunciar als seus valors essencials: la proximitat humana, la tradició, l'autenticitat i la confiança que ofereix al client.</p>
-                  <p>Tot i que aquest model comercial difícilment serà completament digital, sí que necessita incorporar progressivament solucions tecnològiques tant a l'establiment com en la manera de comunicar-se i relacionar-se amb els seus clients.</p>
-                  <p>Existeixen moltes eines digitals i en continuen apareixent moltes mes però aquí et presentem algunes que poden ajudar-te a millorar la visibilitat del teu negoci i potenciar les teves vendes.</p>
+          <div class="grid">
+            <div class="article-wrap">
+              <div class="article-accent" aria-hidden="true"></div>
+              <div class="article">
+                <h2>Eines digitals per al comerç de proximitat</h2>
+                <div class="article-content">
+                  <div class="article-text">
+                    <p>El comerç de proximitat es clau en la vida de les nostres ciutats haurà d'afrontar els nous desafiaments de la modernització i la innovació sense renunciar als seus valors essencials: la proximitat humana, la tradició, l'autenticitat i la confiança que ofereix al client.</p>
+                    <p>Tot i que aquest model comercial difícilment serà completament digital, sí que necessita incorporar progressivament solucions tecnològiques tant a l'establiment com en la manera de comunicar-se i relacionar-se amb els seus clients.</p>
+                    <p>Existeixen moltes eines digitals i en continuen apareixent moltes mes però aquí et presentem algunes que poden ajudar-te a millorar la visibilitat del teu negoci i potenciar les teves vendes.</p>
+                  </div>
+                  <img src="https://soulvi.com/wp-content/uploads/2025/03/aplicaciones-personalizadas-para-pymes.webp" alt="Eines digitals per al comerç">
                 </div>
-                <img src="https://soulvi.com/wp-content/uploads/2025/03/aplicaciones-personalizadas-para-pymes.webp" alt="Eines digitals per al comerç">
               </div>
             </div>
+
+            <aside class="aside">
+              <h3>Quines eines digitals pots utilitzar al teu negoci per intentar vendre més?</h3>
+
+              <div class="list">
+                <div class="list-item" id="missatgeria-trigger" style="cursor: pointer;"><div class="list-num">1</div><div class="list-label">La missatgeria instantània</div></div>
+                <div class="list-item"><div class="list-num">2</div><div class="list-label">Les xarxes socials</div></div>
+                <div class="list-item"><div class="list-num">3</div><div class="list-label">Les plataformes de geolocalització</div></div>
+                <div class="list-item"><div class="list-num">4</div><div class="list-label">Les pàgines web</div></div>
+                <div class="list-item"><div class="list-num">5</div><div class="list-label">Les botigues online</div></div>
+                <div class="list-item"><div class="list-num">6</div><div class="list-label">Les aplicacions mòbils</div></div>
+                <div class="list-item"><div class="list-num">7</div><div class="list-label">Els butlletins electrònics</div></div>
+                <div class="list-item"><div class="list-num">8</div><div class="list-label">Les tecnologies al punt de venda</div></div>
+              </div>
+            </aside>
           </div>
-
-          <aside class="aside">
-            <h3>Quines eines digitals pots utilitzar al teu negoci per intentar vendre més?</h3>
-
-            <div class="list">
-              <div class="list-item"><div class="list-num">1</div><div class="list-label">La missatgeria instantània</div></div>
-              <div class="list-item"><div class="list-num">2</div><div class="list-label">Les xarxes socials</div></div>
-              <div class="list-item"><div class="list-num">3</div><div class="list-label">Les plataformes de geolocalització</div></div>
-              <div class="list-item"><div class="list-num">4</div><div class="list-label">Les pàgines web</div></div>
-              <div class="list-item"><div class="list-num">5</div><div class="list-label">Les botigues online</div></div>
-              <div class="list-item"><div class="list-num">6</div><div class="list-label">Les aplicacions mòbils</div></div>
-              <div class="list-item"><div class="list-num">7</div><div class="list-label">Els butlletins electrònics</div></div>
-              <div class="list-item"><div class="list-num">8</div><div class="list-label">Les tecnologies al punt de venda</div></div>
-            </div>
-          </aside>
         </div>
       </div>
+    </div>
+
+    <!-- Carrusel de Eines Digitals (oculto por defecto) -->
+    <div class="carrusel-container" id="carrusel-container">
+      <button class="back-button" id="back-button" style="display: none;">
+        <span>←</span> Tornar
+      </button>
+        <div class="swiper">
+            <div class="swiper-wrapper">
+
+                <div class="swiper-slide custom-slide-effort">
+                    <div class="header">
+                        <h1>LA MISSATGERIA INSTANTÀNIA</h1>
+                        <div class="header-line"></div>
+                    </div>
+
+                    <div class="effort-layout">
+
+                        <div class="col-left-text">
+                            <p>Les aplicacions de missatgeria instantània com Whatsapp o Telegram permeten intercanviar informació a temps real de diferents tipus d'arxius, ja siguin textos, imatges, vídeos, missatges de veu o fins i tot fer videoconferències.</p>
+
+                            <p style="margin-top: 15px; font-weight: 500;">Sabies que són eines apropiades per fidelitzar la clientela?</p>
+
+                            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=500&auto=format&fit=crop" alt="Mans utilitzant mòbils" class="hands-image">
+                        </div>
+
+                        <div class="col-right-content">
+
+                            <div class="effort-chart-container">
+                                <div class="chart-header">Quin esforç t'implica?</div>
+
+                                <div class="chart-axis">
+                                    <span>Baix</span> <span>Mig</span> <span>Alt</span>
+                                </div>
+
+                                <div class="chart-grid">
+                                    <div class="chart-row-label">Inversió (€)</div>
+                                    <div class="chart-bars">
+                                        <div class="bar-unit filled"></div> <div class="bar-unit"></div><div class="bar-unit"></div><div class="bar-unit"></div><div class="bar-unit"></div><div class="bar-unit"></div><div class="bar-unit"></div><div class="bar-unit"></div><div class="bar-unit"></div><div class="bar-unit"></div>
+                                    </div>
+
+                                    <div class="chart-row-label">Temps</div>
+                                    <div class="chart-bars">
+                                        <div class="bar-unit filled"></div><div class="bar-unit filled"></div><div class="bar-unit filled"></div> <div class="bar-unit"></div><div class="bar-unit"></div><div class="bar-unit"></div><div class="bar-unit"></div><div class="bar-unit"></div><div class="bar-unit"></div><div class="bar-unit"></div>
+                                    </div>
+
+                                    <div class="chart-row-label">Complexitat</div>
+                                    <div class="chart-bars">
+                                        <div class="bar-unit filled"></div><div class="bar-unit filled"></div> <div class="bar-unit"></div><div class="bar-unit"></div><div class="bar-unit"></div><div class="bar-unit"></div><div class="bar-unit"></div><div class="bar-unit"></div><div class="bar-unit"></div><div class="bar-unit"></div>
+                                    </div>
+                                </div>
+                                <div class="chart-axis" style="padding-left: 110px; margin-top:2px;">
+                                    <span style="font-size: 0.6rem;">BAIX</span> <span style="font-size: 0.6rem;">MIG</span> <span style="font-size: 0.6rem;">ALT</span>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="char-header">
+                                    <div class="char-arrow"></div>
+                                    Principals característiques
+                                </div>
+                                <div class="char-box">
+                                    <ul class="char-list">
+                                        <li><strong>La inversió és baixa.</strong> Les aplicacions de missatgeria instantània tenen un cost econòmic molt baix; WhatsApp i Telegram són gratuïtes.</li>
+                                        <li><strong>El temps de dedicació és mitjà-baix.</strong> La missatgeria instantània no presenta massa dificultats tècniques, la qual cosa facilita molt el seu ús.</li>
+                                        <li><strong>La dificultat tècnica és baixa.</strong> La major part d'opcions que ofereix no presenten massa dificultat. Un cop plantejada una estratègia, el seu desenvolupament és senzill.</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="swiper-slide custom-slide-avantatges">
+                    <div class="header">
+                        <h1>EINES PER A LA DIGITALITZACIÓ: LA MISSATGERIA INSTANTÀNIA</h1>
+                        <div class="header-line"></div>
+                    </div>
+
+                    <div class="question-section">
+                        <h2>Com pot ajudar a vendre la missatgeria instantània?</h2>
+                    </div>
+
+                    <div class="main-points">
+                        <div class="point">
+                            <h3>T'ajuda a impulsar accions comercials més específiques</h3>
+                            <p>Ens ofereix la possibilitat d'enviar comunicacions i fer accions comercials molt més directes.</p>
+                        </div>
+                        <div class="point">
+                            <h3>Et fa més present en la resolució de dubtes</h3>
+                            <p>La facilitat d'ús d'aquesta eina permet que la nostra clientela disposi d'un canal d'atenció molt personalitzat i en temps real.</p>
+                        </div>
+                        <div class="point">
+                            <h3>Promou la confiança i contribueix a la fidelització</h3>
+                            <p>Al ser una eina utilitzada per les persones ens permet promoure una major confiança i un llançament de comandes més eficient.</p>
+                        </div>
+                    </div>
+
+                    <div class="ideas-separator">
+                        <p>Et donem algunes idees...</p>
+                    </div>
+
+                    <div class="ideas-grid-layout">
+                        <div class="examples-wrapper">
+                            <div class="idea-box">
+                                <h3>Menjar preparat:</h3>
+                                <p>imagina que a través del **WhatsApp** pots informar la teva clientela dels plats o menús del dia de manera que puguin fer la seva comanda i indicar l'hora en què la passaran a recollir. De ben segur que agrairan conèixer de primera mà i en exclusiva les teves propostes del dia.</p>
+                            </div>
+                            <div class="idea-box">
+                                <h3>Centre d'estètica:</h3>
+                                <p>pots utilitzar la missatgeria instantània per donar a conèixer els serveis, productes i marques amb les quals treballes. Per mitjà del catàleg poden tenir informació actualitzada, amb fotografies i preus. Aquest canal també es pot emprar per a la reserva o recordatori de cites.</p>
+                            </div>
+                            <div class="idea-box">
+                                <h3>Pastisseria:</h3>
+                                <p>com a servei personal, pots fer un llistat de contactes de la teva clientela i oferir-li, i així ho desitja, la possibilitat de fer les reserves a través de WhatsApp. Si la teva clientela realitza la seva comanda amb antelació, tindràs més temps per organitzar-te en funció de la demanda.</p>
+                            </div>
+                        </div>
+
+                        <div class="image-container">
+                            <img src="https://www.reactivoz.com/wp-content/uploads/2021/10/apps2.jpg" alt="Telèfon amb una app de missatgeria" class="slide-tool-image">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="swiper-slide custom-slide-tutorial">
+                    <div class="header">
+                        <h1>XARXES SOCIALS: WHATSAPP BUSINESS</h1>
+                        <div class="header-line"></div>
+                    </div>
+
+                    <div class="tutorial-layout">
+                        <div class="video-column">
+                            <iframe
+                                width="100%"
+                                height="350"
+                                src="https://www.youtube.com/embed/icBIjF226vI"
+                                title="Tutorial WhatsApp Business"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen
+                                style="border-radius: 12px; margin-bottom: 15px; box-shadow: 0 8px 24px rgba(14, 20, 198, 0.2); border: 3px solid rgba(14, 20, 198, 0.1);">
+                            </iframe>
+                            <p class="video-source-info">Font: YouTube | Tutorial per a petits negocis</p>
+                            <a href="https://business.whatsapp.com/?lang=es_ES" target="_blank" class="download-link">Descarrega l'app de WhatsApp Business</a>
+                        </div>
+
+                        <div class="info-column">
+                            <div class="info-box">
+                                <h3>Què és WhatsApp Business?</h3>
+                                <p>És una aplicació gratuïta creada especialment per a petits i mitjans negocis. Facilita la interacció amb la clientela en oferir eines per automatitzar, ordenar i respondre ràpidament als missatges.</p>
+                            </div>
+
+                            <div class="info-box">
+                                <h3>Funcions Clau:</h3>
+                                <ul>
+                                    <li>Perfil d'Empresa (adreça, email, descripció, pàgina web).</li>
+                                    <li>Catàleg de productes o serveis.</li>
+                                    <li>Missatges de benvinguda i absència.</li>
+                                    <li>Respostes ràpides (dreceres de teclat per a preguntes freqüents).</li>
+                                    <li>Etiquetes per organitzar la clientela (nou client, comanda pendent, pagat).</li>
+                                </ul>
+                            </div>
+
+                            <div class="info-box">
+                                <h3>Consell d'Ús:</h3>
+                                <p>Utilitza els **estats** per promocionar les teves ofertes del dia. És una manera ràpida i visual d'arribar a tots els teus contactes sense saturar els xats individuals.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="swiper-slide custom-slide-exemple">
+                    <div class="header">
+                        <h1>EXEMPLE PRÀCTIC: UNA XARCUTERIA</h1>
+                        <div class="header-line"></div>
+                    </div>
+
+                    <div class="example-section">
+                        <div class="left-column">
+                            <img src="https://scontent-mrs2-2.xx.fbcdn.net/v/t39.30808-6/464308164_9150523988293283_8828637897336618400_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=TQFgeQeukT8Q7kNvwHH2Yg1&_nc_oc=Adl6Rsc_jBVELF9B5J57FVkdECzFapaRoLmxCtCow_GqgUNalrsGdhP8TZPpe0hH3QE&_nc_zt=23&_nc_ht=scontent-mrs2-2.xx&_nc_gid=r2f_qKGzLNssSbLOYB2nOA&oh=00_AfhzZ00S6kR2rYMNeGPk2XJXTi5EmaRgOl5xZtlCSEihiA&oe=6923EC29" alt="Charcuteria amb productes" class="main-image">
+
+                            <p style="margin-top: 15px; font-size: 0.9em; text-align: justify;">
+                                La Xarcuteria "El Bon Tall" decideix implementar WhatsApp Business per modernitzar la gestió de comandes i millorar la comunicació amb els seus clients.
+                            </p>
+
+                            <div class="callout-box" style="margin-top: 20px;">
+                                <strong>Resultat:</strong> Després de 2 mesos, han reduït un 40% les trucades per encàrrecs, han incrementat les vendes de productes especials en un 15% i han millorat la percepció de modernitat del seu negoci.
+                            </div>
+                        </div>
+
+                        <div class="right-column">
+                            <div class="steps-box">
+                                <h3>Els 3 passos de l'estratègia:</h3>
+                                <ul class="steps-list">
+                                    <li>
+                                        <span class="step-number">1</span>
+                                        <strong>Creació del Catàleg:</strong> Van pujar fotos de les seves taules de formatges, lots de productes i plats preparats utilitzant la funció de Catàleg de WhatsApp Business.
+                                    </li>
+                                    <li>
+                                        <span class="step-number">2</span>
+                                        <strong>Missatge Automatitzat:</strong> Van configurar una resposta automàtica que dona la benvinguda i indica l'horari de recollida de comandes: "Benvingut/da a El Bon Tall! Les comandes es recullen de 10h a 13h i de 17h a 20h. Digues-nos què necessites!"
+                                    </li>
+                                    <li>
+                                        <span class="step-number">3</span>
+                                        <strong>Estratègia de Fidelització:</strong> Cada divendres, envien una llista de difusió (no un grup!) amb el "Producte de la Setmana" (una oferta exclusiva) a aquells clients que van donar el seu consentiment.
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="callout-box">
+                                <strong>Recorda:</strong> Utilitza sempre les **Llistes de Difusió** per enviar missatges massius. Els missatges de grups s'han de limitar a comunicació interna o temes molt específics amb clients que han acceptat la dinàmica de grup.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="swiper-pagination"></div>
+
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+        </div>
     </div>
   </main>
 
   <div id="footer-container"></div>
     <script src="loadheaderfooter.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script>
+        let swiperInstance = null;
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const trigger = document.getElementById('missatgeria-trigger');
+            const carruselContainer = document.getElementById('carrusel-container');
+            const mainContent = document.getElementById('main-content');
+            const backButton = document.getElementById('back-button');
+
+            function showCarrusel() {
+                // Ocultar contenido principal
+                if (mainContent) {
+                    mainContent.style.display = 'none';
+                }
+
+                // Mostrar carrusel
+                carruselContainer.classList.add('show');
+                if (backButton) {
+                    backButton.style.display = 'flex';
+                }
+
+                // Inicializar Swiper solo cuando se muestra el carrusel
+                if (!swiperInstance) {
+                    swiperInstance = new Swiper('.swiper', {
+                        slidesPerView: 1,
+                        spaceBetween: 0,
+                        loop: true,
+                        pagination: {
+                            el: '.swiper-pagination',
+                            clickable: true,
+                        },
+                        navigation: {
+                            nextEl: '.swiper-button-next',
+                            prevEl: '.swiper-button-prev',
+                        },
+                    });
+                }
+            }
+
+            function hideCarrusel() {
+                // Ocultar carrusel
+                carruselContainer.classList.remove('show');
+                if (backButton) {
+                    backButton.style.display = 'none';
+                }
+
+                // Mostrar contenido principal
+                if (mainContent) {
+                    mainContent.style.display = 'block';
+                }
+
+                // Destruir Swiper si existe
+                if (swiperInstance) {
+                    swiperInstance.destroy(true, true);
+                    swiperInstance = null;
+                }
+            }
+
+            // Event listener para mostrar el carrusel
+            if (trigger) {
+                trigger.addEventListener('click', showCarrusel);
+            }
+
+            // Event listener para el botón volver
+            if (backButton) {
+                backButton.addEventListener('click', hideCarrusel);
+            }
+        });
+    </script>
 
 </body>
 </html>

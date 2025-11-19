@@ -47,30 +47,43 @@
 
 html {
     margin: 0;
+    overflow: hidden;
+    height: 100%;
+}
+
+/* Permitir scroll en html cuando hay formulario */
+html.form-page-html {
     overflow-y: auto;
-    overflow-x: hidden;
+    height: auto;
 }
 
 body {
     margin: 0;
-    overflow-y: auto;
-    overflow-x: hidden;
+    overflow: hidden;
     font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Arial, sans-serif;
     background: linear-gradient(135deg, #f6f6f6 0%, #e8e8e8 100%);
     background-attachment: fixed;
     color: var(--color-text);
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    height: 100vh;
     line-height: 1.6;
     position: relative;
+}
+
+/* Permitir scroll solo en el formulario de empresa */
+body.form-page {
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: auto;
+    min-height: 100vh;
 }
 
 /* Los estilos de navegación del header están en styleheader.css para mantener consistencia */
 
 main {
     flex: 1 0 auto;
-    padding: 2rem 1.5rem 10rem 1.5rem;
+    padding: 2rem 1.5rem 4rem 1.5rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -78,7 +91,16 @@ main {
     max-width: 1400px;
     margin: 0 auto;
     width: 100%;
-    min-height: calc(100vh + 200px);
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+/* Permitir scroll en main cuando hay formulario */
+body.form-page main {
+    overflow-y: visible;
+    overflow-x: hidden;
+    min-height: auto;
+    padding-bottom: 6rem;
 }
 
 #inici {

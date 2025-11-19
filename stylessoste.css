@@ -49,7 +49,7 @@ html,
 body {
   height: 100%;
   margin: 0;
-  overflow: auto;
+  overflow: hidden;
 }
 
 body {
@@ -79,8 +79,7 @@ footer {
 
 main {
   flex: 1;
-  overflow-y: auto;
-  overflow-x: hidden;
+  overflow: hidden;
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
