@@ -83,7 +83,7 @@ main {
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
-  padding: 1.5rem 1rem 4rem 1rem;
+  padding: 5rem 1rem 5rem 1rem;
   background: linear-gradient(135deg, #f6f6f6 0%, #e8e8e8 100%);
   min-height: 0;
 }
@@ -92,7 +92,7 @@ main {
 h1 {
   font-size: 1.25rem;
   color: var(--color-title);
-  margin: 0 0 1.5rem 0;
+  margin: 2rem 0 1.5rem 0;
   width: 100%;
   max-width: 1100px;
   text-align: left;

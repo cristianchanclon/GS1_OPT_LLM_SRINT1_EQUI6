@@ -9,6 +9,7 @@ async function loadHTML(containerId, filePath) {
       customizeHeaderTitle();
       hideActiveNavLink();
       addPageClass();
+      hideIntranetFromEspais();
     }
   } catch (error) {
     console.error(error);
@@ -91,6 +92,33 @@ function addPageClass() {
       header.classList.add("page-digitalitzacio");
     } else if (normalizedCurrent.includes("sostenibilitat")) {
       header.classList.add("page-sostenibilitat");
+    }
+  }
+}
+
+function hideIntranetFromEspais() {
+  const currentFile =
+    decodeURIComponent(window.location.pathname).split("/").pop() ||
+    "index.html";
+  const normalizedCurrent = normalizePath(currentFile || "index.html");
+
+  const isIntranet =
+    normalizedCurrent.includes("intranet.html") ||
+    normalizedCurrent.includes("intranet") ||
+    normalizedCurrent.includes("formulari.html") ||
+    normalizedCurrent.includes("formulari");
+
+  if (isIntranet) {
+    // Buscar el enlace de Intranet en el menú desplegable de Espais
+    const intranetLink = document.querySelector(
+      '#header-container nav a[href="Intranet.html"], #header-container nav a[data-page="intranet.html"]'
+    );
+
+    if (intranetLink) {
+      const parentLi = intranetLink.closest("li");
+      if (parentLi) {
+        parentLi.style.display = "none";
+      }
     }
   }
 }
