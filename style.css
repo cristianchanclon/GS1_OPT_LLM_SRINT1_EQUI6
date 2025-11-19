@@ -110,6 +110,20 @@ p {
     color: #555;
 }
 
+.card{
+    background:white; padding:25px; border-radius:10px;
+    box-shadow:0 4px 16px rgba(0,0,0,0.15); width:300px;
+    label{ display:block; margin-top:12px; font-size:14px; }
+    input{
+    width:100%; padding:8px; margin-top:4px; border-radius:6px;
+    border:1px solid #ccc;
+    }
+    button{
+    width:100%; margin-top:18px; padding:10px; background:#1b4d3e;
+    color:white; border:none; border-radius:6px; cursor:pointer;
+    }
+}
+
 @media (max-width: 768px) {
     nav {
         flex-direction: column;

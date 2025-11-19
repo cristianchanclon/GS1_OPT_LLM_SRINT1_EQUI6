@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ca">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Montsià30 - Intranet</title>
+
+    <link rel="icon" type="image/png" href="montsitech.png" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div id="header-container"></div>
+
+    <main>
+     <div class="card" id="app">
+        <h1>Inicia sessió</h1>
+        <form id="loginForm" novalidate>
+          <label for="user">Usuari</label>
+          <input id="user" name="user" type="text" autocomplete="username">
+
+          <label for="pass">Contrasenya</label>
+          <input id="pass" name="pass" type="password" autocomplete="password">
+
+          <button type="submit">Entrar</button>
+        </form>
+      </div>
+    </main>
+
+    <div id="footer-container"></div>
+    <script src="loadheaderfooter.js"></script>
+    <script>
+    document.getElementById('loginForm').addEventListener('submit', function (e) {
+      e.preventDefault(); 
+      window.location.href = "formulari.html";
+    });
+    </script>
+  </body>
+</html>
