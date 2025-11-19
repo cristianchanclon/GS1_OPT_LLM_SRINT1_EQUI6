@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eines Digitals - Carrusel (Cíclic)</title>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <style>
+        /* ========================================= */
+        /* === ESTILOS BASE Y ESTRUCTURA GENERAL === */
+        /* ========================================= */
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+            line-height: 1.5;
+            color: #333;
+        }
+
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        /* Swiper Container */
+        .swiper {
+            width: 100%;
+            height: 830px; /* Altura ajustada para el contenido */
+            padding-bottom: 50px;
+        }
+
+        .swiper-slide {
+            padding: 40px !important;
+            box-sizing: border-box;
+            background: #fff;
+            text-align: left;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            overflow-y: auto; /* Permite scroll vertical si el contenido es demasiado largo */
+        }
+
+        /* Global Header Style */
+        .header {
+            margin-bottom: 20px;
+            padding-top: 10px;
+        }
+
+        .header h1 {
+            font-size: 1.2em;
+            color: #333;
+            margin: 0;
+            display: inline-block;
+            padding-left: 15px;
+            position: relative;
+            font-weight: bold;
+        }
+
+        .header h1::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background-color: orange;
+        }
+
+        .header-line {
+            width: 50%;
+            height: 3px;
+            background-color: orange;
+            margin-top: 3px;
+            margin-left: 15px;
+        }
+
+        /* Swiper Paginación y Navegación */
+        .swiper-pagination-bullet-active {
+            background: orange !important;
+        }
+
+        .swiper-button-next, .swiper-button-prev {
+            color: orange !important;
+        }
+
+        /* ========================================= */
+        /* === ESTILOS ESPECÍFICOS DE DIAPOSITIVAS === */
+        /* (Se mantienen los estilos consolidados de la respuesta anterior) */
+        /* ========================================= */
+
+        /* --- Diapositiva 1: missatgeria_instantania1.html (Gráfico Esfuerzo) --- */
+        .custom-slide-effort .effort-layout {
+            display: flex;
+            gap: 40px;
+            width: 100%;
+            height: 100%;
+            align-items: flex-start;
+        }
+        .custom-slide-effort .col-left-text {
+            flex: 0 0 40%;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .custom-slide-effort .col-left-text p {
+            font-size: 0.95rem; line-height: 1.6; color: #333; margin: 0; text-align: justify;
+        }
+        .custom-slide-effort .hands-image {
+            width: 100%; height: 250px; object-fit: cover; border-radius: 5px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .custom-slide-effort .col-right-content {
+            flex: 1; display: flex; flex-direction: column; gap: 25px;
+        }
+        .custom-slide-effort .chart-header {
+            background-color: #C09F78; color: white; padding: 8px 15px; font-weight: bold; font-size: 1rem; margin-bottom: 10px; position: relative;
+        }
+        .custom-slide-effort .chart-header::after {
+            content: ''; position: absolute; bottom: -10px; left: 20px; border-left: 10px solid transparent; border-right: 10px solid transparent; border-top: 10px solid #C09F78;
+        }
+        .custom-slide-effort .chart-grid {
+            display: grid; grid-template-columns: 100px 1fr; gap: 10px; align-items: center; margin-top: 20px; font-size: 0.85rem; font-weight: bold; color: #333;
+        }
+        .custom-slide-effort .chart-row-label { text-align: right; padding-right: 10px; }
+        .custom-slide-effort .chart-bars {
+            display: flex; gap: 2px; height: 25px;
+        }
+        .custom-slide-effort .bar-unit {
+            flex: 1; border: 1px solid #ccc; background-color: white;
+        }
+        .custom-slide-effort .bar-unit.filled {
+            background-color: #8B4513; border-color: #8B4513;
+        }
+        .custom-slide-effort .chart-axis {
+            display: flex; justify-content: space-between; padding-left: 110px; font-size: 0.7rem; color: #666; text-transform: uppercase; margin-top: 5px;
+        }
+        .custom-slide-effort .char-header {
+            display: flex; align-items: center; gap: 10px; font-size: 1.3rem; font-weight: bold; color: #000; margin-bottom: 10px;
+        }
+        .custom-slide-effort .char-arrow {
+            width: 0; height: 0; border-top: 10px solid transparent; border-bottom: 10px solid transparent; border-left: 15px solid #8B4513;
+        }
+        .custom-slide-effort .char-box {
+            background-color: #F9F5F0; padding: 20px; border-radius: 5px;
+        }
+        .custom-slide-effort .char-list { list-style: none; padding: 0; margin: 0; }
+        .custom-slide-effort .char-list li {
+            margin-bottom: 15px; padding-left: 15px; border-left: 3px solid #E6CDB2; font-size: 0.9rem; line-height: 1.4; color: #333;
+        }
+        .custom-slide-effort .char-list strong { color: #000; font-weight: bold; }
+
+        /* --- Diapositiva 2: missatgeria_instantania2.html (Avantatges i Idees) --- */
+        .custom-slide-avantatges .question-section h2 { font-size: 1.5em; margin-top: 15px; margin-bottom: 10px; font-weight: normal; }
+        .custom-slide-avantatges .question-section p { font-size: 0.9em; margin-bottom: 25px; }
+        .custom-slide-avantatges .main-points { display: flex; justify-content: space-between; gap: 20px; border-bottom: 1px solid #ddd; padding-bottom: 25px; }
+        .custom-slide-avantatges .point { flex: 1; padding-right: 10px; }
+        .custom-slide-avantatges .point h3 { font-size: 1em; color: #ff8c00; margin-bottom: 8px; padding-bottom: 3px; border-bottom: 1px solid #ff8c00; font-weight: bold; line-height: 1.2; }
+        .custom-slide-avantatges .point p { font-size: 0.85em; }
+        .custom-slide-avantatges .ideas-separator { text-align: center; margin: 30px 0 20px 0; position: relative; }
+        .custom-slide-avantatges .ideas-separator p { display: inline-block; background: #fff; padding: 0 15px; font-size: 0.9em; color: #555; position: relative; z-index: 2; }
+        .custom-slide-avantatges .ideas-separator p::before { content: '💡'; position: absolute; left: -15px; top: 50%; transform: translateY(-50%); font-size: 1.1em; background-color: #f7f3e8; padding: 4px; border: 1px solid #f0e0b3; border-radius: 50%; }
+        .custom-slide-avantatges .ideas-separator::before { content: ''; position: absolute; top: 50%; left: 0; right: 0; height: 1px; background-color: #ddd; z-index: 1; }
+        .custom-slide-avantatges .ideas-grid-layout { display: flex; align-items: flex-start; padding-top: 10px; }
+        .custom-slide-avantatges .examples-wrapper { display: flex; flex: 6; }
+        .custom-slide-avantatges .idea-box { flex: 1; padding-right: 20px; padding-left: 0; }
+        .custom-slide-avantatges .idea-box h3 { color: #ff4500; font-size: 1em; margin-top: 0; margin-bottom: 10px; font-weight: bold; }
+        .custom-slide-avantatges .idea-box p { font-size: 0.8em; text-align: justify; }
+        .custom-slide-avantatges .image-container { flex: 2; display: flex; flex-direction: column; align-items: flex-end; text-align: right; padding-left: 20px; }
+        .custom-slide-avantatges .slide-tool-image { width: 100%; max-width: 180px; height: auto; max-height: 300px; object-fit: contain; border-radius: 8px; display: block; margin-bottom: 15px; }
+        .custom-slide-avantatges .image-container p { font-size: 0.8em; color: #555; margin-top: 15px; line-height: 1.4; padding-left: 10px; border-left: 2px solid orange; }
+
+        /* --- Diapositiva 3: xarxes_socials.html (ASSUMINT WHATSAPP TUTORIAL) --- */
+        .custom-slide-tutorial .tutorial-layout { display: flex; gap: 30px; align-items: flex-start; margin-top: 15px; }
+        .custom-slide-tutorial .video-column { flex: 0 0 55%; }
+        .custom-slide-tutorial .video-placeholder {
+            width: 100%; height: 350px; background-color: #f0f0f0; display: flex; align-items: center; justify-content: center; color: #888; font-size: 1.2em; border-radius: 8px; margin-bottom: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .custom-slide-tutorial .video-source-info { font-size: 0.8em; color: #777; text-align: center; }
+        .custom-slide-tutorial .info-column { flex: 1; display: flex; flex-direction: column; gap: 20px; }
+        .custom-slide-tutorial .info-box { background-color: #fff9e6; border: 1px solid #ffcc66; padding: 15px; border-radius: 8px; }
+        .custom-slide-tutorial .info-box h3 { color: #cc6600; font-size: 1.1em; margin-top: 0; margin-bottom: 8px; border-bottom: 2px solid #ffcc66; padding-bottom: 5px; }
+        .custom-slide-tutorial .info-box p, .custom-slide-tutorial .info-box ul { font-size: 0.9em; margin: 0; padding: 0; }
+        .custom-slide-tutorial .info-box ul { list-style: none; padding-left: 15px; }
+        .custom-slide-tutorial .info-box li::before { content: '•'; color: #cc6600; font-weight: bold; display: inline-block; width: 1em; margin-left: -1em; }
+        .custom-slide-tutorial .download-link { display: block; text-align: center; margin-top: 15px; background-color: #4CAF50; color: white; padding: 10px; border-radius: 5px; text-decoration: none; font-weight: bold; }
+
+        /* --- Diapositiva 4: Exemple Pràctic.html (Exemple Charcuteria) --- */
+        .custom-slide-exemple .example-section { display: flex; gap: 40px; margin-top: 20px; }
+        .custom-slide-exemple .left-column { flex: 1; }
+        .custom-slide-exemple .right-column { flex: 1; display: flex; flex-direction: column; gap: 25px; }
+        .custom-slide-exemple .main-image { width: 100%; height: 350px; object-fit: cover; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.15); }
+        .custom-slide-exemple .steps-box { background-color: #f0f8ff; padding: 20px; border-left: 5px solid #007bff; border-radius: 5px; }
+        .custom-slide-exemple .steps-box h3 { color: #007bff; font-size: 1.2em; margin-top: 0; margin-bottom: 15px; padding-bottom: 5px; border-bottom: 1px solid #007bff; }
+        .custom-slide-exemple .steps-list { list-style: none; padding: 0; margin: 0; }
+        .custom-slide-exemple .steps-list li { margin-bottom: 15px; padding-left: 30px; position: relative; font-size: 0.95em; line-height: 1.4; }
+        .custom-slide-exemple .steps-list li strong { color: #333; font-weight: bold; }
+        .custom-slide-exemple .step-number {
+            position: absolute; left: 0; top: 0; background-color: #007bff; color: white; width: 20px; height: 20px; border-radius: 50%; text-align: center; line-height: 20px; font-size: 0.8em; font-weight: bold;
+        }
+        .custom-slide-exemple .callout-box { background-color: #fff0f0; border: 1px solid #ff9999; padding: 15px; border-radius: 5px; font-size: 0.9em; color: #cc0000; }
+        .custom-slide-exemple .callout-box strong { color: #8b0000; }
+
+        /* ========================================= */
+        /* === MEDIA QUERIES === */
+        /* ========================================= */
+        
+        @media (max-width: 900px) {
+            .swiper { height: auto; padding-bottom: 40px; }
+            .swiper-slide { padding: 20px !important; }
+
+            /* Slides 1 & 2 */
+            .custom-slide-effort .effort-layout,
+            .custom-slide-avantatges .ideas-grid-layout { flex-direction: column; gap: 20px; }
+            .custom-slide-effort .col-left-text { flex: none; width: 100%; }
+            .custom-slide-effort .hands-image { height: 180px; }
+            .custom-slide-avantatges .main-points { flex-direction: column; gap: 15px; }
+            .custom-slide-avantatges .examples-wrapper { flex-direction: column; gap: 20px; }
+            .custom-slide-avantatges .image-container { 
+                order: -1; width: 100%; align-items: center; padding-left: 0; 
+            }
+            .custom-slide-avantatges .slide-tool-image { 
+                max-width: 150px; max-height: 200px;
+            }
+
+            /* Slide 3 */
+            .custom-slide-tutorial .tutorial-layout { flex-direction: column; gap: 20px; }
+            .custom-slide-tutorial .video-column { flex: none; width: 100%; }
+            .custom-slide-tutorial .video-placeholder { height: 250px; }
+            .custom-slide-tutorial .info-column { flex: none; width: 100%; }
+
+            /* Slide 4 */
+            .custom-slide-exemple .example-section { flex-direction: column; gap: 20px; }
+            .custom-slide-exemple .left-column,
+            .custom-slide-exemple .right-column { flex: none; width: 100%; }
+            .custom-slide-exemple .main-image { height: 250px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="swiper">
+            <div class="swiper-wrapper">
+                
+                <div class="swiper-slide custom-slide-effort">
+                    <div class="header">
+                        <h1>LA MISSATGERIA INSTANTÀNIA</h1>
+                        <div class="header-line"></div>
+                    </div>
+                
+                    <div class="effort-layout">
+                        
+                        <div class="col-left-text">
+                            <p>Les aplicacions de missatgeria instantània com Whatsapp o Telegram permeten intercanviar informació a temps real de diferents tipus d'arxius, ja siguin textos, imatges, vídeos, missatges de veu o fins i tot fer videoconferències.</p>
+                            
+                            <p style="margin-top: 15px; font-weight: 500;">Sabies que són eines apropiades per fidelitzar la clientela?</p>
+                
+                            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=500&auto=format&fit=crop" alt="Mans utilitzant mòbils" class="hands-image">
+                        </div>
+                
+                        <div class="col-right-content">
+                            
+                            <div class="effort-chart-container">
+                                <div class="chart-header">Quin esforç t'implica?</div>
+                                
+                                <div class="chart-axis">
+                                    <span>Baix</span> <span>Mig</span> <span>Alt</span>
+                                </div>
+                
+                                <div class="chart-grid">
+                                    <div class="chart-row-label">Inversió (€)</div>
+                                    <div class="chart-bars">
+                                        <div class="bar-unit filled"></div> <div class="bar-unit"></div><div class="bar-unit"></div><div class="bar-unit"></div><div class="bar-unit"></div><div class="bar-unit"></div><div class="bar-unit"></div><div class="bar-unit"></div><div class="bar-unit"></div><div class="bar-unit"></div>
+                                    </div>
+                
+                                    <div class="chart-row-label">Temps</div>
+                                    <div class="chart-bars">
+                                        <div class="bar-unit filled"></div><div class="bar-unit filled"></div><div class="bar-unit filled"></div> <div class="bar-unit"></div><div class="bar-unit"></div><div class="bar-unit"></div><div class="bar-unit"></div><div class="bar-unit"></div><div class="bar-unit"></div><div class="bar-unit"></div>
+                                    </div>
+                
+                                    <div class="chart-row-label">Complexitat</div>
+                                    <div class="chart-bars">
+                                        <div class="bar-unit filled"></div><div class="bar-unit filled"></div> <div class="bar-unit"></div><div class="bar-unit"></div><div class="bar-unit"></div><div class="bar-unit"></div><div class="bar-unit"></div><div class="bar-unit"></div><div class="bar-unit"></div><div class="bar-unit"></div>
+                                    </div>
+                                </div>
+                                <div class="chart-axis" style="padding-left: 110px; margin-top:2px;">
+                                    <span style="font-size: 0.6rem;">BAIX</span> <span style="font-size: 0.6rem;">MIG</span> <span style="font-size: 0.6rem;">ALT</span>
+                                </div>
+                            </div>
+                
+                            <div>
+                                <div class="char-header">
+                                    <div class="char-arrow"></div>
+                                    Principals característiques
+                                </div>
+                                <div class="char-box">
+                                    <ul class="char-list">
+                                        <li><strong>La inversió és baixa.</strong> Les aplicacions de missatgeria instantània tenen un cost econòmic molt baix; WhatsApp i Telegram són gratuïtes.</li>
+                                        <li><strong>El temps de dedicació és mitjà-baix.</strong> La missatgeria instantània no presenta massa dificultats tècniques, la qual cosa facilita molt el seu ús.</li>
+                                        <li><strong>La dificultat tècnica és baixa.</strong> La major part d'opcions que ofereix no presenten massa dificultat. Un cop plantejada una estratègia, el seu desenvolupament és senzill.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                
+                        </div>
+                
+                    </div>
+                </div>
+                
+                <div class="swiper-slide custom-slide-avantatges">
+                    <div class="header">
+                        <h1>EINES PER A LA DIGITALITZACIÓ: LA MISSATGERIA INSTANTÀNIA</h1>
+                        <div class="header-line"></div>
+                    </div>
+                    
+                    <div class="question-section">
+                        <h2>Com pot ajudar a vendre la missatgeria instantània?</h2>
+                        <p>La missatgeria instantània ens pot ajudar a mantenir una relació més estreta i constant amb la nostra clientela, ja que:</p>
+                    </div>
+
+                    <div class="main-points">
+                        <div class="point">
+                            <h3>T'ajuda a impulsar accions comercials més específiques</h3>
+                            <p>Ens ofereix la possibilitat d'enviar comunicacions i fer accions comercials molt més directes.</p>
+                        </div>
+                        <div class="point">
+                            <h3>Et fa més present en la resolució de dubtes</h3>
+                            <p>La facilitat d'ús d'aquesta eina permet que la nostra clientela disposi d'un canal d'atenció molt personalitzat i en temps real.</p>
+                        </div>
+                        <div class="point">
+                            <h3>Promou la confiança i contribueix a la fidelització</h3>
+                            <p>Al ser una eina utilitzada per les persones ens permet promoure una major confiança i un llançament de comandes més eficient.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="ideas-separator">
+                        <p>Et donem algunes idees...</p>
+                    </div>
+
+                    <div class="ideas-grid-layout">
+                        <div class="examples-wrapper">
+                            <div class="idea-box">
+                                <h3>Menjar preparat:</h3>
+                                <p>imagina que a través del **WhatsApp** pots informar la teva clientela dels plats o menús del dia de manera que puguin fer la seva comanda i indicar l'hora en què la passaran a recollir. De ben segur que agrairan conèixer de primera mà i en exclusiva les teves propostes del dia.</p>
+                            </div>
+                            <div class="idea-box">
+                                <h3>Centre d'estètica:</h3>
+                                <p>pots utilitzar la missatgeria instantània per donar a conèixer els serveis, productes i marques amb les quals treballes. Per mitjà del catàleg poden tenir informació actualitzada, amb fotografies i preus. Aquest canal també es pot emprar per a la reserva o recordatori de cites.</p>
+                            </div>
+                            <div class="idea-box">
+                                <h3>Pastisseria:</h3>
+                                <p>com a servei personal, pots fer un llistat de contactes de la teva clientela i oferir-li, i així ho desitja, la possibilitat de fer les reserves a través de WhatsApp. Si la teva clientela realitza la seva comanda amb antelació, tindràs més temps per organitzar-te en funció de la demanda.</p>
+                            </div>
+                        </div>
+
+                        <div class="image-container">
+                            <img src="https://www.reactivoz.com/wp-content/uploads/2021/10/apps2.jpg" alt="Telèfon amb una app de missatgeria" class="slide-tool-image">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="swiper-slide custom-slide-tutorial">
+                    <div class="header">
+                        <h1>XARXES SOCIALS: WHATSAPP BUSINESS</h1>
+                        <div class="header-line"></div>
+                    </div>
+                
+                    <div class="tutorial-layout">
+                        <div class="video-column">
+                            <div class="video-placeholder">
+                                [Placeholder per Vídeo de YouTube sobre WhatsApp Business]
+                            </div>
+                            <p class="video-source-info">Font: YouTube | Tutorial per a petits negocis</p>
+                            <a href="#" class="download-link" style="background-color:#4CAF50;">Descarrega l'app de WhatsApp Business</a>
+                        </div>
+                
+                        <div class="info-column">
+                            <div class="info-box">
+                                <h3>Què és WhatsApp Business?</h3>
+                                <p>És una aplicació gratuïta creada especialment per a petits i mitjans negocis. Facilita la interacció amb la clientela en oferir eines per automatitzar, ordenar i respondre ràpidament als missatges.</p>
+                            </div>
+                
+                            <div class="info-box">
+                                <h3>Funcions Clau:</h3>
+                                <ul>
+                                    <li>Perfil d'Empresa (adreça, email, descripció, pàgina web).</li>
+                                    <li>Catàleg de productes o serveis.</li>
+                                    <li>Missatges de benvinguda i absència.</li>
+                                    <li>Respostes ràpides (dreceres de teclat per a preguntes freqüents).</li>
+                                    <li>Etiquetes per organitzar la clientela (nou client, comanda pendent, pagat).</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="info-box">
+                                <h3>Consell d'Ús:</h3>
+                                <p>Utilitza els **estats** per promocionar les teves ofertes del dia. És una manera ràpida i visual d'arribar a tots els teus contactes sense saturar els xats individuals.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="swiper-slide custom-slide-exemple">
+                    <div class="header">
+                        <h1>EXEMPLE PRÀCTIC: UNA XARCUTERIA</h1>
+                        <div class="header-line"></div>
+                    </div>
+                
+                    <div class="example-section">
+                        <div class="left-column">
+                            <img src="https://images.unsplash.com/photo-1549488344-93f9c6d17b4c?q=80&w=600&auto=format&fit=crop" alt="Charcuteria amb productes" class="main-image">
+                            
+                            <p style="margin-top: 15px; font-size: 0.9em; text-align: justify;">
+                                La Xarcuteria "El Bon Tall" decideix implementar WhatsApp Business per modernitzar la gestió de comandes i millorar la comunicació amb els seus clients.
+                            </p>
+
+                            <div class="callout-box" style="margin-top: 20px;">
+                                <strong>Resultat:</strong> Després de 2 mesos, han reduït un 40% les trucades per encàrrecs, han incrementat les vendes de productes especials en un 15% i han millorat la percepció de modernitat del seu negoci.
+                            </div>
+                        </div>
+                
+                        <div class="right-column">
+                            <div class="steps-box">
+                                <h3>Els 3 passos de l'estratègia:</h3>
+                                <ul class="steps-list">
+                                    <li>
+                                        <span class="step-number">1</span>
+                                        <strong>Creació del Catàleg:</strong> Van pujar fotos de les seves taules de formatges, lots de productes i plats preparats utilitzant la funció de Catàleg de WhatsApp Business.
+                                    </li>
+                                    <li>
+                                        <span class="step-number">2</span>
+                                        <strong>Missatge Automatitzat:</strong> Van configurar una resposta automàtica que dona la benvinguda i indica l'horari de recollida de comandes: "Benvingut/da a El Bon Tall! Les comandes es recullen de 10h a 13h i de 17h a 20h. Digues-nos què necessites!"
+                                    </li>
+                                    <li>
+                                        <span class="step-number">3</span>
+                                        <strong>Estratègia de Fidelització:</strong> Cada divendres, envien una llista de difusió (no un grup!) amb el "Producte de la Setmana" (una oferta exclusiva) a aquells clients que van donar el seu consentiment.
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <div class="callout-box">
+                                <strong>Recorda:</strong> Utilitza sempre les **Llistes de Difusió** per enviar missatges massius. Els missatges de grups s'han de limitar a comunicació interna o temes molt específics amb clients que han acceptat la dinàmica de grup.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="swiper-pagination"></div>
+
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var swiper = new Swiper('.swiper', {
+                // Modo Cíclico: Permite pasar de la última diapositiva a la primera
+                loop: true, 
+                
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+            });
+        });
+    </script>
+</body>
+</html>
