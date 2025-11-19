@@ -8,6 +8,7 @@ async function loadHTML(containerId, filePath) {
     if (containerId === "header-container") {
       customizeHeaderTitle();
       hideActiveNavLink();
+      addPageClass();
     }
   } catch (error) {
     console.error(error);
@@ -30,8 +31,25 @@ function customizeHeaderTitle() {
   const isDigitalitzacio =
     normalizedPath.includes("digitalitzacio.html") ||
     normalizedPath.endsWith("digitalitzacio");
+  const isSostenibilitat =
+    normalizedPath.includes("sostenibilitat.html") ||
+    normalizedPath.endsWith("sostenibilitat");
+  const isIntranet =
+    normalizedPath.includes("intranet.html") ||
+    normalizedPath.endsWith("intranet");
+  const isFormulari =
+    normalizedPath.includes("formulari.html") ||
+    normalizedPath.endsWith("formulari");
 
-  headerTitle.textContent = isDigitalitzacio ? "Digitalització" : "Montsià30";
+  if (isDigitalitzacio) {
+    headerTitle.textContent = "Digitalització";
+  } else if (isSostenibilitat) {
+    headerTitle.textContent = "Sostenibilitat";
+  } else if (isIntranet || isFormulari) {
+    headerTitle.textContent = "Intranet";
+  } else {
+    headerTitle.textContent = "Montsià30";
+  }
 }
 
 function hideActiveNavLink() {
@@ -53,6 +71,28 @@ function hideActiveNavLink() {
       }
     }
   });
+}
+
+function addPageClass() {
+  const currentFile =
+    decodeURIComponent(window.location.pathname).split("/").pop() ||
+    "index.html";
+  const normalizedCurrent = normalizePath(currentFile || "index.html");
+  const header = document.querySelector("#header-container header");
+
+  if (header) {
+    // Eliminar todas las clases de página
+    header.classList.remove("page-inici", "page-digitalitzacio", "page-sostenibilitat");
+
+    // Agregar clase según la página actual
+    if (normalizedCurrent === "index.html" || normalizedCurrent === "index" || normalizedCurrent === "") {
+      header.classList.add("page-inici");
+    } else if (normalizedCurrent.includes("digitalitzacio")) {
+      header.classList.add("page-digitalitzacio");
+    } else if (normalizedCurrent.includes("sostenibilitat")) {
+      header.classList.add("page-sostenibilitat");
+    }
+  }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
