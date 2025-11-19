@@ -14,9 +14,40 @@
 
 * {
   box-sizing: border-box;
+  /* Para Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-primary) #f1f1f1;
 }
 
-/* ==== MODIFICADO PARA BLOQUEAR SCROLL ==== */
+/* Personalización de la scrollbar para navegadores WebKit (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+  margin: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--color-primary) 0%, var(--color-accent) 100%);
+  border-radius: 10px;
+  border: 2px solid #f1f1f1;
+  transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #0a0fa0 0%, var(--color-primary) 100%);
+  border-color: #e0e0e0;
+}
+
+::-webkit-scrollbar-corner {
+  background: #f1f1f1;
+}
+
+/* ==== MODIFICADO PARA PERMITIR SCROLL ==== */
 html,
 body {
   height: 100%;
