@@ -1,140 +1,786 @@
+:root {
+    --color-principal: #1b4d3e;
+    --color-accent: #00c389;
+    --color-fons: #f6f6f6;
+    --color-text: #333;
+    --color-tarjeta: #ffffff;
+    --color-hover: #f7ce69;
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
+    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
 * {
     box-sizing: border-box;
+    /* Para Firefox */
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-principal) #f1f1f1;
+}
+
+/* Personalización de la scrollbar para navegadores WebKit (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+    margin: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, var(--color-principal) 0%, var(--color-accent) 100%);
+    border-radius: 10px;
+    border: 2px solid #f1f1f1;
+    transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #2a6b5a 0%, var(--color-principal) 100%);
+    border-color: #e0e0e0;
+}
+
+::-webkit-scrollbar-corner {
+    background: #f1f1f1;
+}
+
+html {
+    margin: 0;
+    overflow: hidden;
+    height: 100%;
+}
+
+/* Permitir scroll en html cuando hay formulario */
+html.form-page-html {
+    overflow-y: auto;
+    height: auto;
 }
 
 body {
     margin: 0;
-    font-family: "Segoe UI", Arial, sans-serif;
-    background-color: var(--color-fons);
+    overflow: hidden;
+    font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+    background: linear-gradient(135deg, #f6f6f6 0%, #e8e8e8 100%);
+    background-attachment: fixed;
     color: var(--color-text);
     display: flex;
     flex-direction: column;
+    height: 100vh;
+    line-height: 1.6;
+    position: relative;
+}
+
+/* Permitir scroll solo en el formulario de empresa */
+body.form-page {
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: auto;
     min-height: 100vh;
 }
 
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.8rem 2rem;
-}
-
-nav ul {
-    list-style: none;
-    display: flex;
-    gap: 1.2rem;
-    margin: 0;
-    padding: 0;
-}
-
-nav a {
-    color: white;
-    text-decoration: none;
-    font-weight: 600;
-    transition: color 0.3s;
-}
-
-nav a:hover {
-    color: var(--color-accent);
-}
+/* Los estilos de navegación del header están en styleheader.css para mantener consistencia */
 
 main {
-    flex: 1;
-    padding: 3rem 1.5rem;
+    flex: 1 0 auto;
+    padding: 5rem 1.5rem 5rem 1.5rem;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: flex-start;
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+/* Permitir scroll en main cuando hay formulario */
+body.form-page main {
+    overflow-y: visible;
+    overflow-x: hidden;
+    min-height: auto;
+    padding-bottom: 6rem;
 }
 
 #inici {
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
+    padding: 1.5rem 1rem;
+    background: none;
+    border-radius: 0;
+    max-width: 950px;
+    width: 100%;
+    box-shadow: none;
+    border: none;
+    position: relative;
+    flex-shrink: 0;
 }
 
 h1 {
     font-size: 2.5rem;
     color: var(--color-principal);
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
     text-align: center;
+    font-weight: 800;
+    letter-spacing: -0.6px;
+    line-height: 1.2;
+    position: relative;
+    z-index: 1;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
-p {
-    max-width: 700px;
+#inici p {
+    max-width: 750px;
     text-align: center;
-    margin: auto;
-    margin-bottom: 3rem;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    color: #444;
+    line-height: 1.6;
+    position: relative;
+    z-index: 1;
+    font-weight: 400;
+    letter-spacing: 0.1px;
 }
 
 .contenedor-flex {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 2rem;
+    gap: 1.5rem;
     width: 100%;
     max-width: 1200px;
+    flex: 1;
+    overflow: visible;
+    align-items: flex-start;
+    margin-bottom: 4rem;
+    padding-bottom: 2rem;
 }
 
 .tarjeta {
-    background-color: #fff;
-    border-radius: 12px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    flex: 1 1 280px;
-    max-width: 320px;
+    background-color: var(--color-tarjeta);
+    border-radius: 16px;
+    box-shadow: var(--shadow-md);
+    flex: 1 1 300px;
+    max-width: 360px;
     text-align: center;
-    padding: 1.5rem;
-    transition: transform 0.2s ease-in-out, box-shadow 0.2s;
+    padding: 0;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     text-decoration: none;
     color: inherit;
+    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    position: relative;
+}
+
+.tarjeta::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--color-principal), var(--color-accent));
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
 .tarjeta:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: var(--shadow-lg);
+}
+
+.tarjeta:hover::before {
+    opacity: 1;
+}
+
+.tarjeta article {
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    position: relative;
+    z-index: 1;
 }
 
 .tarjeta img {
     width: 100%;
-    height: 180px;
+    height: 200px;
     object-fit: cover;
-    border-radius: 10px;
-    margin-bottom: 1rem;
+    border-radius: 0;
+    margin: 0;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.tarjeta:hover img {
+    transform: scale(1.05);
 }
 
 .tarjeta h2 {
     color: var(--color-principal);
-    margin: 0.5rem 0;
+    margin: 1.25rem 0 0.75rem 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.3px;
 }
 
 .tarjeta p {
-    font-size: 0.95rem;
-    color: #555;
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.6;
+    margin: 0;
+    flex-grow: 1;
 }
 
-.card{
-    background:white; padding:25px; border-radius:10px;
-    box-shadow:0 4px 16px rgba(0,0,0,0.15); width:300px;
-    label{ display:block; margin-top:12px; font-size:14px; }
-    input{
-    width:100%; padding:8px; margin-top:4px; border-radius:6px;
-    border:1px solid #ccc;
+/* Estilos mejorados para la tarjeta de login */
+main.login-page {
+    justify-content: center;
+    min-height: calc(100vh - 150px);
+    padding: 5rem 1.5rem 5rem 1.5rem;
+}
+
+.card {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--color-principal), var(--color-accent));
+}
+
+.card:hover {
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+}
+
+.card-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.card-header h1 {
+    font-size: 1.875rem;
+    color: var(--color-principal);
+    margin-bottom: 0.5rem;
+    margin-top: 0;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+    text-align: center;
+    text-shadow: none;
+    line-height: 1.3;
+}
+
+.card-subtitle {
+    font-size: 0.95rem;
+    color: #666;
+    margin: 0;
+    font-weight: 400;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.card label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-text);
+    letter-spacing: 0.2px;
+}
+
+.card input {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    margin-top: 0;
+    border-radius: 8px;
+    border: 2px solid #e0e0e0;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: all 0.3s ease;
+    background-color: #fafafa;
+    color: var(--color-text);
+}
+
+.card input:focus {
+    outline: none;
+    border-color: var(--color-principal);
+    background-color: white;
+    box-shadow: 0 0 0 3px rgba(27, 77, 62, 0.1);
+}
+
+.card input::placeholder {
+    color: #999;
+    font-size: 0.9rem;
+}
+
+.card input:hover {
+    border-color: #ccc;
+    background-color: white;
+}
+
+.card button {
+    width: 100%;
+    margin-top: 0.5rem;
+    padding: 0.875rem 1.5rem;
+    background: linear-gradient(135deg, var(--color-principal) 0%, #2a6b5a 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(27, 77, 62, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.card button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.card button:hover::before {
+    left: 100%;
+}
+
+.card button:hover {
+    background: linear-gradient(135deg, #2a6b5a 0%, var(--color-principal) 100%);
+    box-shadow: 0 6px 20px rgba(27, 77, 62, 0.3);
+    transform: translateY(-2px);
+}
+
+.card button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(27, 77, 62, 0.2);
+}
+
+.card button span {
+    position: relative;
+    z-index: 1;
+}
+
+/* Responsive para la tarjeta de login */
+@media (max-width: 768px) {
+    .card {
+        padding: 2rem 1.5rem;
+        max-width: 100%;
+        margin: 0 1rem;
     }
-    button{
-    width:100%; margin-top:18px; padding:10px; background:#1b4d3e;
-    color:white; border:none; border-radius:6px; cursor:pointer;
+
+    .card-header h1 {
+        font-size: 1.625rem;
     }
+}
+
+@media (max-width: 480px) {
+    .card {
+        padding: 1.75rem 1.25rem;
+        border-radius: 12px;
+    }
+
+    .card-header h1 {
+        font-size: 1.5rem;
+    }
+
+    .card input {
+        padding: 0.75rem 0.875rem;
+    }
+
+    .card button {
+        padding: 0.75rem 1.25rem;
+    }
+}
+
+/* Estilos para el formulario empresarial */
+.form-container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    padding: 2.5rem;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+    position: relative;
+    overflow: visible;
+    margin-bottom: 2rem;
+}
+
+.form-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--color-principal), var(--color-accent));
+}
+
+.form-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.form-header h1 {
+    font-size: 2rem;
+    color: var(--color-principal);
+    margin-bottom: 0.5rem;
+    margin-top: 0;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+    text-shadow: none;
+}
+
+.form-subtitle {
+    font-size: 1rem;
+    color: #666;
+    margin: 0;
+    font-weight: 400;
+}
+
+.form-section {
+    margin-bottom: 2rem;
+}
+
+.section-title {
+    font-size: 1.5rem;
+    color: var(--color-principal);
+    margin-bottom: 1.5rem;
+    margin-top: 0;
+    font-weight: 600;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid rgba(27, 77, 62, 0.1);
+}
+
+.camp {
+    margin-bottom: 1.5rem;
+}
+
+.camp label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--color-text);
+    letter-spacing: 0.1px;
+}
+
+.camp input[type="text"],
+.camp input[type="number"] {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    border-radius: 8px;
+    border: 2px solid #e0e0e0;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: all 0.3s ease;
+    background-color: #fafafa;
+    color: var(--color-text);
+}
+
+.camp input[type="text"]:focus,
+.camp input[type="number"]:focus {
+    outline: none;
+    border-color: var(--color-principal);
+    background-color: white;
+    box-shadow: 0 0 0 3px rgba(27, 77, 62, 0.1);
+}
+
+.camp input[type="text"]:hover,
+.camp input[type="number"]:hover {
+    border-color: #ccc;
+    background-color: white;
+}
+
+.camp input::placeholder {
+    color: #999;
+    font-size: 0.9rem;
+}
+
+.camp select {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    border-radius: 8px;
+    border: 2px solid #e0e0e0;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: all 0.3s ease;
+    background-color: #fafafa;
+    color: var(--color-text);
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23333' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    padding-right: 2.5rem;
+}
+
+.camp select:focus {
+    outline: none;
+    border-color: var(--color-principal);
+    background-color: white;
+    box-shadow: 0 0 0 3px rgba(27, 77, 62, 0.1);
+}
+
+.camp select:hover {
+    border-color: #ccc;
+    background-color: white;
+}
+
+.camp textarea {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    border-radius: 8px;
+    border: 2px solid #e0e0e0;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: all 0.3s ease;
+    background-color: #fafafa;
+    color: var(--color-text);
+    resize: vertical;
+    min-height: 100px;
+}
+
+.camp textarea:focus {
+    outline: none;
+    border-color: var(--color-principal);
+    background-color: white;
+    box-shadow: 0 0 0 3px rgba(27, 77, 62, 0.1);
+}
+
+.camp textarea:hover {
+    border-color: #ccc;
+    background-color: white;
+}
+
+.camp textarea::placeholder {
+    color: #999;
+    font-size: 0.9rem;
+}
+
+.form-questions {
+    margin-bottom: 2rem;
+}
+
+.form-actions {
+    display: none;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 2px solid rgba(27, 77, 62, 0.1);
+}
+
+.btn-submit {
+    width: 100%;
+    padding: 0.875rem 1.5rem;
+    background: linear-gradient(135deg, var(--color-principal) 0%, #2a6b5a 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(27, 77, 62, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-submit::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.btn-submit:hover::before {
+    left: 100%;
+}
+
+.btn-submit:hover {
+    background: linear-gradient(135deg, #2a6b5a 0%, var(--color-principal) 100%);
+    box-shadow: 0 6px 20px rgba(27, 77, 62, 0.3);
+    transform: translateY(-2px);
+}
+
+.btn-submit:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(27, 77, 62, 0.2);
+}
+
+.btn-submit span {
+    position: relative;
+    z-index: 1;
+}
+
+.missatge-exit {
+    text-align: center;
+    padding: 3rem 2rem;
+    background: linear-gradient(135deg, rgba(27, 77, 62, 0.05) 0%, rgba(0, 195, 137, 0.05) 100%);
+    border-radius: 12px;
+    border: 2px solid rgba(27, 77, 62, 0.1);
+}
+
+.missatge-content svg {
+    color: var(--color-accent);
+    margin-bottom: 1rem;
+    animation: checkmark 0.6s ease;
+}
+
+@keyframes checkmark {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.missatge-content h3 {
+    font-size: 1.5rem;
+    color: var(--color-principal);
+    margin: 0 0 0.75rem 0;
+    font-weight: 700;
+}
+
+.missatge-content p {
+    font-size: 1rem;
+    color: #666;
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* Responsive para el formulario */
+@media (max-width: 768px) {
+    .form-container {
+        padding: 2rem 1.5rem;
+        margin: 0 1rem;
+    }
+
+    .form-header h1 {
+        font-size: 1.75rem;
+    }
+
+    .section-title {
+        font-size: 1.25rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .form-container {
+        padding: 1.75rem 1.25rem;
+        border-radius: 12px;
+    }
+
+    .form-header h1 {
+        font-size: 1.5rem;
+    }
+
+    .camp input[type="text"],
+    .camp input[type="number"],
+    .camp select,
+    .camp textarea {
+        padding: 0.75rem 0.875rem;
+    }
+}
+
+/* Efecto de overlay en hover para las tarjetas */
+.tarjeta::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(27, 77, 62, 0.03) 0%, rgba(0, 195, 137, 0.03) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.tarjeta:hover::after {
+    opacity: 1;
 }
 
 @media (max-width: 768px) {
-    nav {
-        flex-direction: column;
+    main {
+        padding: 2.5rem 1rem;
+    }
+
+    h1 {
+        font-size: 2.25rem;
+    }
+
+    #inici {
+        margin-bottom: 3rem;
+        padding: 1.5rem 1rem;
+    }
+
+    #inici p {
+        font-size: 1rem;
     }
 
     .contenedor-flex {
         flex-direction: column;
         align-items: center;
+        gap: 2rem;
+    }
+
+    .tarjeta {
+        max-width: 100%;
+        width: 100%;
     }
 
     .tarjeta img {
-        height: 150px;
+        height: 180px;
+    }
+
+    .tarjeta:hover {
+        transform: translateY(-4px) scale(1.01);
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.875rem;
+    }
+
+    main {
+        padding: 2rem 1rem;
     }
 }

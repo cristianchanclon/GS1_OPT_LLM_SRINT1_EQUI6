@@ -1,37 +1,50 @@
 <!DOCTYPE html>
-<html lang="ca">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Montsià30 - Formulari d'empresa</title>
+<html lang="ca" class="form-page-html">
 
-    <link rel="icon" type="image/png" href="montsitech.png" />
-    <link rel="stylesheet" href="style.css" />
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Montsià30 - Formulari d'empresa</title>
 
-  <body>
-    <div id="header-container"></div>
-    <main> 
-      <h1>Formulari Empresarial</h1>
+  <link rel="icon" type="image/png" href="montsitech.png" />
+  <link rel="stylesheet" href="style.css" />
+</head>
 
-      <div class="camp">
-        <label for="tipus">Quina empresa ets:</label>
-        <select id="tipus" required>
-          <option value="">-- Selecciona una opció --</option>
-          <option value="digitalització">Mercadona</option>
-          <option value="digitalització">Consum</option>
-          <option value="sostenibilitat">Lidl</option>
-          <option value="sostenibilitat">Hife</option>
-        </select>
+<body class="form-page">
+  <div id="header-container"></div>
+  <main>
+    <div class="form-container">
+      <div class="form-header">
+        <h1>Formulari Empresarial</h1>
+        <p class="form-subtitle">Completa la informació sobre la teva empresa</p>
+      </div>
+
+      <div class="form-section">
+        <div class="camp">
+          <label for="tipus">Quina empresa ets:</label>
+          <select id="tipus" name="tipus" required>
+            <option value="">-- Selecciona una opció --</option>
+            <option value="digitalització">Mercadona</option>
+            <option value="digitalització">Consum</option>
+            <option value="sostenibilitat">Lidl</option>
+            <option value="sostenibilitat">Hife</option>
+          </select>
+        </div>
       </div>
 
       <form id="formulari">
-        <div id="preguntes"></div>
-        <button type="submit">Enviar</button>
+        <div id="preguntes" class="form-questions"></div>
+        <div class="form-actions">
+          <button type="submit" class="btn-submit">
+            <span>Enviar formulari</span>
+          </button>
+        </div>
       </form>
-      <script src="form.js"></script>
-    </main>
-    <div id="footer-container"></div>
-    <script src="loadheaderfooter.js"></script>
-  </body>
+    </div>
+    <script src="form.js"></script>
+  </main>
+  <div id="footer-container"></div>
+  <script src="loadheaderfooter.js"></script>
+</body>
+
 </html>

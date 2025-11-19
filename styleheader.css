@@ -1,18 +1,181 @@
 header {
-    position: sticky;
+    position: fixed;
     top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
     background-color: #1b4d3e;
     color: white;
     z-index: 1000;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+    padding: 0;
+}
+
+header nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0.9rem 2rem;
+    width: 100%;
 }
 
 .logo {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
+    flex-shrink: 0;
 }
 
 .logo img {
-    height: 45px;
+    height: 48px;
+    width: auto;
+    border-radius: 4px;
+}
+
+.logo strong {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #f4f0d5;
+    letter-spacing: 0.5px;
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+header nav ul {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+header nav ul li {
+    display: flex;
+    align-items: center;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 0.6rem 1.2rem;
+    transition: color 0.3s ease, background-color 0.3s ease;
+    border-radius: 4px;
+    letter-spacing: 0.3px;
+}
+
+header nav ul li a:hover {
+    color: #f7ce69;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Líneas separadoras entre elementos del menú */
+header nav ul li + li:not(.dropdown) {
+    border-left: 1px solid rgba(255, 255, 255, 0.25);
+    margin-left: 0;
+    padding-left: 0;
+}
+
+/* En la página Inici, el dropdown no tiene línea a la izquierda */
+header.page-inici nav ul li.dropdown {
+    border-left: none;
+}
+
+/* En otras páginas, el dropdown sí tiene línea a la izquierda */
+header:not(.page-inici) nav ul li.dropdown {
+    border-left: 1px solid rgba(255, 255, 255, 0.25);
+    margin-left: 0;
+    padding-left: 0;
+}
+
+/* Elementos después del dropdown sí tienen línea */
+header nav ul li.dropdown + li {
+    border-left: 1px solid rgba(255, 255, 255, 0.25);
+    margin-left: 0;
+    padding-left: 0;
+}
+/* ==== MENÚ DESPLEGABLE ==== */
+.dropdown {
+  position: relative;
+}
+
+.dropdown > a {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.dropdown > a::after {
+  content: "▾";
+  font-size: 0.8rem;
+  margin-left: 2px;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #1b4d3e;
+  padding: 0.5rem 0;
+  border-radius: 6px;
+  min-width: 220px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  z-index: 999;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: 0;
+}
+
+/* Área invisible superior para facilitar la transición del cursor sin espacio */
+.dropdown-menu::before {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: transparent;
+}
+
+.dropdown-menu li {
+  display: block;
+  width: 100%;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 0.75rem 1.25rem;
+  color: white;
+  text-decoration: none;
+  transition: background 0.3s ease, color 0.3s ease;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.dropdown-menu a:hover {
+  background-color: rgba(247, 206, 105, 0.2);
+  color: #f7ce69;
+}
+
+.dropdown-menu li:first-child a {
+  border-radius: 6px 6px 0 0;
+}
+
+.dropdown-menu li:last-child a {
+  border-radius: 0 0 6px 6px;
+}
+
+/* Mostrar el menú al pasar el ratón por "Espais" */
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+/* Mantener el menú visible cuando el cursor está sobre el menú desplegable */
+.dropdown-menu:hover {
+  display: block;
 }

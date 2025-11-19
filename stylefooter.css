@@ -8,6 +8,8 @@ p {
 footer {
     width: 100%;
     bottom: 0;
+    left: 0;
+    right: 0;
     height: 50px;
     position: fixed;
     box-shadow: 1px 1px 5px #000;
@@ -17,4 +19,8 @@ footer {
     padding: 1rem;
     font-size: 0.9rem;
     flex-shrink: 0;
+    z-index: 1000;
+}
+.bloc-inferior {
+  margin-bottom: 2rem; /* o prueba con 3rem para más separación */
 }
