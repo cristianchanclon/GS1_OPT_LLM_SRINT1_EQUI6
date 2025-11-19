@@ -72,32 +72,32 @@ header nav ul li a:hover {
     background-color: rgba(255, 255, 255, 0.1);
 }
 
-/* Líneas separadoras entre elementos del menú */
+
 header nav ul li + li:not(.dropdown) {
     border-left: 1px solid rgba(255, 255, 255, 0.25);
     margin-left: 0;
     padding-left: 0;
 }
 
-/* En la página Inici, el dropdown no tiene línea a la izquierda */
+
 header.page-inici nav ul li.dropdown {
     border-left: none;
 }
 
-/* En otras páginas, el dropdown sí tiene línea a la izquierda */
+
 header:not(.page-inici) nav ul li.dropdown {
     border-left: 1px solid rgba(255, 255, 255, 0.25);
     margin-left: 0;
     padding-left: 0;
 }
 
-/* Elementos después del dropdown sí tienen línea */
+
 header nav ul li.dropdown + li {
     border-left: 1px solid rgba(255, 255, 255, 0.25);
     margin-left: 0;
     padding-left: 0;
 }
-/* ==== MENÚ DESPLEGABLE ==== */
+
 .dropdown {
   position: relative;
 }
@@ -131,7 +131,7 @@ header nav ul li.dropdown + li {
   margin-top: 0;
 }
 
-/* Área invisible superior para facilitar la transición del cursor sin espacio */
+
 .dropdown-menu::before {
   content: "";
   position: absolute;
@@ -170,12 +170,12 @@ header nav ul li.dropdown + li {
   border-radius: 0 0 6px 6px;
 }
 
-/* Mostrar el menú al pasar el ratón por "Espais" */
+
 .dropdown:hover .dropdown-menu {
   display: block;
 }
 
-/* Mantener el menú visible cuando el cursor está sobre el menú desplegable */
+
 .dropdown-menu:hover {
   display: block;
 }

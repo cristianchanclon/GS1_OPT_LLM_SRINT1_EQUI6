@@ -82,10 +82,10 @@ function addPageClass() {
   const header = document.querySelector("#header-container header");
 
   if (header) {
-    // Eliminar todas las clases de página
+    
     header.classList.remove("page-inici", "page-digitalitzacio", "page-sostenibilitat");
 
-    // Agregar clase según la página actual
+    
     if (normalizedCurrent === "index.html" || normalizedCurrent === "index" || normalizedCurrent === "") {
       header.classList.add("page-inici");
     } else if (normalizedCurrent.includes("digitalitzacio")) {
@@ -109,7 +109,7 @@ function hideIntranetFromEspais() {
     normalizedCurrent.includes("formulari");
 
   if (isIntranet) {
-    // Buscar el enlace de Intranet en el menú desplegable de Espais
+    
     const intranetLink = document.querySelector(
       '#header-container nav a[href="Intranet.html"], #header-container nav a[data-page="intranet.html"]'
     );

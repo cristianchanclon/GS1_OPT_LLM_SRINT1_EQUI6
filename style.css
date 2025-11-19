@@ -12,12 +12,12 @@
 
 * {
     box-sizing: border-box;
-    /* Para Firefox */
+   
     scrollbar-width: thin;
     scrollbar-color: var(--color-principal) #f1f1f1;
 }
 
-/* Personalización de la scrollbar para navegadores WebKit (Chrome, Safari, Edge) */
+
 ::-webkit-scrollbar {
     width: 12px;
     height: 12px;
@@ -51,7 +51,7 @@ html {
     height: 100%;
 }
 
-/* Permitir scroll en html cuando hay formulario */
+
 html.form-page-html {
     overflow-y: auto;
     height: auto;
@@ -71,7 +71,7 @@ body {
     position: relative;
 }
 
-/* Permitir scroll solo en el formulario de empresa */
+
 body.form-page {
     overflow-y: auto;
     overflow-x: hidden;
@@ -79,7 +79,7 @@ body.form-page {
     min-height: 100vh;
 }
 
-/* Los estilos de navegación del header están en styleheader.css para mantener consistencia */
+
 
 main {
     flex: 1 0 auto;
@@ -95,7 +95,7 @@ main {
     overflow-x: hidden;
 }
 
-/* Permitir scroll en main cuando hay formulario */
+
 body.form-page main {
     overflow-y: visible;
     overflow-x: hidden;
@@ -233,7 +233,7 @@ h1 {
     flex-grow: 1;
 }
 
-/* Estilos mejorados para la tarjeta de login */
+
 main.login-page {
     justify-content: center;
     min-height: calc(100vh - 150px);
@@ -384,7 +384,7 @@ main.login-page {
     z-index: 1;
 }
 
-/* Responsive para la tarjeta de login */
+
 @media (max-width: 768px) {
     .card {
         padding: 2rem 1.5rem;
@@ -416,7 +416,7 @@ main.login-page {
     }
 }
 
-/* Estilos para el formulario empresarial */
+
 .form-container {
     width: 100%;
     max-width: 800px;
@@ -685,7 +685,7 @@ main.login-page {
     line-height: 1.6;
 }
 
-/* Responsive para el formulario */
+
 @media (max-width: 768px) {
     .form-container {
         padding: 2rem 1.5rem;
@@ -719,7 +719,7 @@ main.login-page {
     }
 }
 
-/* Efecto de overlay en hover para las tarjetas */
+
 .tarjeta::after {
     content: '';
     position: absolute;

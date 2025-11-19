@@ -12,8 +12,6 @@
 </head>
 <body>
 <div id="header-container"></div>
-
-
   <main>
     <div class="main-content" id="main-content">
       <div class="outer">
@@ -55,7 +53,6 @@
       </div>
     </div>
 
-    <!-- Carrusel de Eines Digitals (oculto por defecto) -->
     <div class="carrusel-container" id="carrusel-container">
       <button class="back-button" id="back-button" style="display: none;">
         <span>←</span> Tornar
@@ -293,18 +290,16 @@
             const backButton = document.getElementById('back-button');
 
             function showCarrusel() {
-                // Ocultar contenido principal
+
                 if (mainContent) {
                     mainContent.style.display = 'none';
                 }
 
-                // Mostrar carrusel
                 carruselContainer.classList.add('show');
                 if (backButton) {
                     backButton.style.display = 'flex';
                 }
 
-                // Inicializar Swiper solo cuando se muestra el carrusel
                 if (!swiperInstance) {
                     swiperInstance = new Swiper('.swiper', {
                         slidesPerView: 1,
@@ -323,30 +318,25 @@
             }
 
             function hideCarrusel() {
-                // Ocultar carrusel
+
                 carruselContainer.classList.remove('show');
                 if (backButton) {
                     backButton.style.display = 'none';
                 }
 
-                // Mostrar contenido principal
                 if (mainContent) {
                     mainContent.style.display = 'block';
                 }
 
-                // Destruir Swiper si existe
                 if (swiperInstance) {
                     swiperInstance.destroy(true, true);
                     swiperInstance = null;
                 }
             }
-
-            // Event listener para mostrar el carrusel
             if (trigger) {
                 trigger.addEventListener('click', showCarrusel);
             }
 
-            // Event listener para el botón volver
             if (backButton) {
                 backButton.addEventListener('click', hideCarrusel);
             }

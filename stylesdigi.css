@@ -1,5 +1,5 @@
 :root {
-  /* PALETA DE COLORES DIGITALITZACIÓ - Azul y Naranja */
+ 
   --color-primary: #0e14c6;
   --color-accent: #d78b2f;
   --color-title: #d78b2f;
@@ -14,12 +14,12 @@
 
 * {
   box-sizing: border-box;
-  /* Para Firefox */
+ 
   scrollbar-width: thin;
   scrollbar-color: var(--color-primary) #f1f1f1;
 }
 
-/* Personalización de la scrollbar para navegadores WebKit (Chrome, Safari, Edge) */
+
 ::-webkit-scrollbar {
   width: 12px;
   height: 12px;
@@ -47,7 +47,7 @@
   background: #f1f1f1;
 }
 
-/* ==== SIN SCROLL ==== */
+
 html,
 body {
   height: 100%;
@@ -62,7 +62,7 @@ body {
   color: #222;
 }
 
-/* HEADER - Los estilos del header están en styleheader.css para mantener consistencia */
+
 
 footer {
   position: fixed;
@@ -79,7 +79,7 @@ footer {
   flex-shrink: 0;
 }
 
-/* MAIN SIN SCROLL */
+
 main {
   flex: 1;
   overflow: hidden;
@@ -91,7 +91,7 @@ main {
   min-height: 0;
 }
 
-/* RESTO DEL CONTENIDO */
+
 .wrap {
   max-width: var(--maxw);
   margin: 0 auto;
@@ -116,9 +116,9 @@ main {
   object-fit: cover;
 }
 
-/* Los estilos de navegación están en styleheader.css para mantener consistencia */
 
-/* Contenedor principal */
+
+
 .outer {
   max-width: var(--maxw);
   width: 100%;
@@ -144,7 +144,7 @@ main {
   gap: 1rem;
 }
 
-/* TIPOGRAFÍA HOMOGÉNEA */
+
 .badge {
   display: block;
   color: var(--color-title);
@@ -375,7 +375,7 @@ main {
   transform: scale(1.02);
 }
 
-/* RESPONSIVE */
+
 @media (max-width: 1100px) {
   main {
     padding: 1.5rem 1rem;
@@ -494,17 +494,17 @@ main {
   }
 }
 
-/* ========================================= */
-/* === ESTILOS DEL CARRUSEL === */
-/* ========================================= */
 
-/* Contenedor principal - visible por defecto */
+
+
+
+
 .main-content {
   width: 100%;
   display: block;
 }
 
-/* Carrusel oculto por defecto */
+
 .carrusel-container {
   display: none;
   width: 100%;
@@ -520,7 +520,7 @@ main {
   margin-top: 2rem;
 }
 
-/* Botón volver - flotante en esquina superior derecha */
+
 .back-button {
   position: fixed;
   top: 90px;
@@ -553,7 +553,7 @@ main {
   font-weight: bold;
 }
 
-/* Swiper Container */
+
 .swiper {
   width: 100%;
   height: auto;
@@ -590,7 +590,7 @@ main {
   padding: 2px 40px 40px 40px !important;
 }
 
-/* Global Header Style */
+
 .header {
   margin-bottom: 15px;
   padding-top: 0;
@@ -627,7 +627,7 @@ main {
   display: none;
 }
 
-/* Swiper Paginación y Navegación */
+
 .swiper-pagination-bullet {
   background: rgba(14, 20, 198, 0.3);
   opacity: 1;
@@ -711,7 +711,7 @@ main {
   transform: scale(1.15);
 }
 
-/* --- Diapositiva 1: missatgeria_instantania1.html (Gráfico Esfuerzo) --- */
+
 .custom-slide-effort .effort-layout {
   display: flex;
   gap: 40px;
@@ -875,7 +875,7 @@ main {
   font-weight: bold;
 }
 
-/* --- Diapositiva 2: missatgeria_instantania2.html (Avantatges i Idees) --- */
+
 .custom-slide-avantatges .question-section {
   margin-top: 15px;
 }
@@ -1080,7 +1080,7 @@ main {
   border-left: 3px solid var(--color-accent);
 }
 
-/* --- Diapositiva 3: xarxes_socials.html (ASSUMINT WHATSAPP TUTORIAL) --- */
+
 .custom-slide-tutorial .tutorial-layout {
   display: flex;
   gap: 30px;
@@ -1200,7 +1200,7 @@ main {
   box-shadow: 0 6px 20px rgba(215, 139, 47, 0.4);
 }
 
-/* --- Diapositiva 4: Exemple Pràctic.html (Exemple Charcuteria) --- */
+
 .custom-slide-exemple .example-section {
   display: flex;
   gap: 40px;
@@ -1299,7 +1299,7 @@ main {
   font-weight: 700;
 }
 
-/* Media Queries para el carrusel */
+
 @media (max-width: 900px) {
   .swiper {
     height: auto;
@@ -1310,7 +1310,7 @@ main {
     padding: 20px !important;
   }
 
-  /* Slides 1 & 2 */
+ 
   .custom-slide-effort .effort-layout,
   .custom-slide-avantatges .ideas-grid-layout {
     flex-direction: column;
@@ -1348,7 +1348,7 @@ main {
     max-height: 350px;
   }
 
-  /* Slide 3 */
+ 
   .custom-slide-tutorial .tutorial-layout {
     flex-direction: column;
     gap: 20px;
@@ -1372,7 +1372,7 @@ main {
     width: 100%;
   }
 
-  /* Slide 4 */
+ 
   .custom-slide-exemple .example-section {
     flex-direction: column;
     gap: 20px;
