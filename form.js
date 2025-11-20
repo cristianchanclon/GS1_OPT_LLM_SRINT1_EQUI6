@@ -1,4 +1,4 @@
-
+// Esperar a que el DOM esté cargado
 document.addEventListener("DOMContentLoaded", function() {
     const tipusSelect = document.getElementById("tipus");
     const formulari = document.getElementById("formulari");
@@ -19,7 +19,7 @@ function seleccionadorpreguntes() {
 
     contenidor.innerHTML = "";
 
-    
+    // Ocultar botón de envío hasta que se seleccione un tipo
     if (formActions) {
         formActions.style.display = tipus ? "block" : "none";
     }
@@ -162,7 +162,7 @@ function seleccionadorpreguntes() {
 
     contenidor.innerHTML = html;
 
-    
+    // Añadir animación de entrada
     contenidor.style.opacity = "0";
     contenidor.style.transform = "translateY(20px)";
     setTimeout(() => {
@@ -179,16 +179,16 @@ function manejarEnviament(e) {
     const formData = new FormData(formulari);
     const data = Object.fromEntries(formData);
 
-    
+    // Validar formulario
     if (!formulari.checkValidity()) {
         formulari.reportValidity();
         return;
     }
 
-    
+    // Mostrar mensaje de éxito
     mostrarMissatgeExit();
 
-    
+    // Aquí puedes enviar los datos a un servidor
     console.log("Dades del formulari:", data);
 }
 
@@ -196,7 +196,7 @@ function mostrarMissatgeExit() {
     const contenidor = document.getElementById("preguntes");
     const formActions = document.querySelector(".form-actions");
 
-    
+    // Ocultar el botón de envío
     if (formActions) {
         formActions.style.display = "none";
     }

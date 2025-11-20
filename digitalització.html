@@ -12,6 +12,20 @@
 </head>
 <body>
 <div id="header-container"></div>
+
+  <!-- Breadcrumb Navigation -->
+  <nav class="breadcrumb-nav" id="breadcrumb-nav">
+    <div class="breadcrumb-container">
+      <a href="index.html" class="breadcrumb-item">Inici</a>
+      <span class="breadcrumb-separator">></span>
+      <span class="breadcrumb-item active" id="breadcrumb-digitalitzacio">Digitalització</span>
+      <span id="breadcrumb-slide" style="display: none;">
+        <span class="breadcrumb-separator">></span>
+        <span class="breadcrumb-item active breadcrumb-slide-name"></span>
+      </span>
+    </div>
+  </nav>
+
   <main>
     <div class="main-content" id="main-content">
       <div class="outer">
@@ -53,10 +67,8 @@
       </div>
     </div>
 
+    <!-- Carrusel de Eines Digitals (oculto por defecto) -->
     <div class="carrusel-container" id="carrusel-container">
-      <button class="back-button" id="back-button" style="display: none;">
-        <span>←</span> Tornar
-      </button>
         <div class="swiper">
             <div class="swiper-wrapper">
 
@@ -283,23 +295,84 @@
     <script>
         let swiperInstance = null;
 
+        // Mapeo de slides a nombres para el breadcrumb
+        const slideNames = {
+            0: 'La missatgeria instantània',
+            1: 'Avantatges i idees',
+            2: 'WhatsApp Business',
+            3: 'Exemple pràctic'
+        };
+
+        // Variables globales para las funciones
+        let carruselContainer, mainContent, trigger;
+
+        function hideCarrusel() {
+            // Ocultar carrusel
+            if (carruselContainer) {
+                carruselContainer.classList.remove('show');
+            }
+
+            // Mostrar contenido principal
+            if (mainContent) {
+                mainContent.style.display = 'block';
+            }
+
+            // Actualizar breadcrumb para ocultar el slide
+            updateBreadcrumb(null);
+
+            // Destruir Swiper si existe
+            if (swiperInstance) {
+                swiperInstance.destroy(true, true);
+                swiperInstance = null;
+            }
+        }
+
+        function updateBreadcrumb(slideIndex) {
+            const breadcrumbSlide = document.getElementById('breadcrumb-slide');
+            const breadcrumbSlideName = document.querySelector('.breadcrumb-slide-name');
+            const breadcrumbDigitalitzacio = document.getElementById('breadcrumb-digitalitzacio');
+
+            if (slideIndex !== null && slideIndex !== undefined) {
+                // Mostrar el slide en el breadcrumb
+                breadcrumbSlide.style.display = 'inline';
+                breadcrumbSlideName.textContent = slideNames[slideIndex] || 'Pàgina del carrusel';
+                // Hacer Digitalització clickeable (convertir a enlace)
+                breadcrumbDigitalitzacio.classList.remove('active');
+                breadcrumbDigitalitzacio.style.cursor = 'pointer';
+                breadcrumbDigitalitzacio.style.color = '';
+                breadcrumbDigitalitzacio.style.textDecoration = 'none';
+                breadcrumbDigitalitzacio.onclick = function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    hideCarrusel();
+                };
+            } else {
+                // Ocultar el slide del breadcrumb (estamos en la página principal)
+                breadcrumbSlide.style.display = 'none';
+                // Hacer Digitalització no clickeable
+                breadcrumbDigitalitzacio.classList.add('active');
+                breadcrumbDigitalitzacio.style.cursor = 'default';
+                breadcrumbDigitalitzacio.style.color = '';
+                breadcrumbDigitalitzacio.style.textDecoration = 'none';
+                breadcrumbDigitalitzacio.onclick = null;
+            }
+        }
+
         document.addEventListener('DOMContentLoaded', function() {
-            const trigger = document.getElementById('missatgeria-trigger');
-            const carruselContainer = document.getElementById('carrusel-container');
-            const mainContent = document.getElementById('main-content');
-            const backButton = document.getElementById('back-button');
+            trigger = document.getElementById('missatgeria-trigger');
+            carruselContainer = document.getElementById('carrusel-container');
+            mainContent = document.getElementById('main-content');
 
             function showCarrusel() {
-
+                // Ocultar contenido principal
                 if (mainContent) {
                     mainContent.style.display = 'none';
                 }
 
+                // Mostrar carrusel
                 carruselContainer.classList.add('show');
-                if (backButton) {
-                    backButton.style.display = 'flex';
-                }
 
+                // Inicializar Swiper solo cuando se muestra el carrusel
                 if (!swiperInstance) {
                     swiperInstance = new Swiper('.swiper', {
                         slidesPerView: 1,
@@ -313,33 +386,26 @@
                             nextEl: '.swiper-button-next',
                             prevEl: '.swiper-button-prev',
                         },
+                        on: {
+                            slideChange: function() {
+                                // Obtener el índice real del slide (sin loop)
+                                const realIndex = this.realIndex;
+                                updateBreadcrumb(realIndex);
+                            }
+                        }
                     });
+                    // Actualizar breadcrumb con el slide inicial
+                    updateBreadcrumb(swiperInstance.realIndex);
                 }
             }
 
-            function hideCarrusel() {
-
-                carruselContainer.classList.remove('show');
-                if (backButton) {
-                    backButton.style.display = 'none';
-                }
-
-                if (mainContent) {
-                    mainContent.style.display = 'block';
-                }
-
-                if (swiperInstance) {
-                    swiperInstance.destroy(true, true);
-                    swiperInstance = null;
-                }
-            }
+            // Event listener para mostrar el carrusel
             if (trigger) {
                 trigger.addEventListener('click', showCarrusel);
             }
 
-            if (backButton) {
-                backButton.addEventListener('click', hideCarrusel);
-            }
+            // Inicializar breadcrumb en la página principal
+            updateBreadcrumb(null);
         });
     </script>
 

@@ -41,6 +41,11 @@ function customizeHeaderTitle() {
   const isFormulari =
     normalizedPath.includes("formulari.html") ||
     normalizedPath.endsWith("formulari");
+  const isContacte =
+    normalizedPath.includes("formconctacte.html") ||
+    normalizedPath.includes("formcontacte.html") ||
+    normalizedPath.endsWith("formconctacte") ||
+    normalizedPath.endsWith("formcontacte");
 
   if (isDigitalitzacio) {
     headerTitle.textContent = "Digitalització";
@@ -48,6 +53,8 @@ function customizeHeaderTitle() {
     headerTitle.textContent = "Sostenibilitat";
   } else if (isIntranet || isFormulari) {
     headerTitle.textContent = "Intranet";
+  } else if (isContacte) {
+    headerTitle.textContent = "Contacte";
   } else {
     headerTitle.textContent = "Montsià30";
   }
@@ -82,10 +89,10 @@ function addPageClass() {
   const header = document.querySelector("#header-container header");
 
   if (header) {
-    
+    // Eliminar todas las clases de página
     header.classList.remove("page-inici", "page-digitalitzacio", "page-sostenibilitat");
 
-    
+    // Agregar clase según la página actual
     if (normalizedCurrent === "index.html" || normalizedCurrent === "index" || normalizedCurrent === "") {
       header.classList.add("page-inici");
     } else if (normalizedCurrent.includes("digitalitzacio")) {
@@ -109,7 +116,7 @@ function hideIntranetFromEspais() {
     normalizedCurrent.includes("formulari");
 
   if (isIntranet) {
-    
+    // Buscar el enlace de Intranet en el menú desplegable de Espais
     const intranetLink = document.querySelector(
       '#header-container nav a[href="Intranet.html"], #header-container nav a[data-page="intranet.html"]'
     );
