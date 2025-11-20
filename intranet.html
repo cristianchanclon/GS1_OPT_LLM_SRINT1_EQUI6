@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 <html lang="ca">
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Montsià30 - Intranet</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Montsià30 - Intranet</title>
 
-  <link rel="icon" type="image/png" href="montsitech.png" />
-  <link rel="stylesheet" href="style.css" />
-</head>
+    <link rel="icon" type="image/png" href="montsitech.png" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-<body>
-  <div id="header-container"></div>
+  <body>
+    <div id="header-container"></div>
 
   <main class="login-page">
-    <div class="card" id="app">
+     <div class="card" id="app">
       <div class="card-header">
         <h1>Inicia sessió</h1>
         <p class="card-subtitle">Accedeix a l'espai d'Intranet</p>
       </div>
-      <form id="loginForm" novalidate>
+        <form id="loginForm" novalidate>
         <div class="form-group">
           <label for="user">Usuari</label>
           <input id="user" name="user" type="text" autocomplete="username" placeholder="Introdueix el teu usuari"
@@ -35,18 +35,18 @@
         <button type="submit" class="btn-primary">
           <span>Entrar</span>
         </button>
-      </form>
-    </div>
-  </main>
+        </form>
+      </div>
+    </main>
 
-  <div id="footer-container"></div>
-  <script src="loadheaderfooter.js"></script>
-  <script>
+    <div id="footer-container"></div>
+    <script src="loadheaderfooter.js"></script>
+    <script>
     document.getElementById('loginForm').addEventListener('submit', function (e) {
       e.preventDefault();
       window.location.href = "formulari.html";
     });
-  </script>
-</body>
+    </script>
+  </body>
 
 </html>

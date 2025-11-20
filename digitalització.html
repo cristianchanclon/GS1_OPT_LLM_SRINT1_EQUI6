@@ -320,7 +320,7 @@
             // Actualizar breadcrumb para ocultar el slide
             updateBreadcrumb(null);
 
-            // Destruir Swiper si existe
+            // Destruir Swiper si existe y resetear al slide inicial
             if (swiperInstance) {
                 swiperInstance.destroy(true, true);
                 swiperInstance = null;
@@ -377,7 +377,8 @@
                     swiperInstance = new Swiper('.swiper', {
                         slidesPerView: 1,
                         spaceBetween: 0,
-                        loop: true,
+                        loop: false,
+                        initialSlide: 0,
                         pagination: {
                             el: '.swiper-pagination',
                             clickable: true,
@@ -388,14 +389,18 @@
                         },
                         on: {
                             slideChange: function() {
-                                // Obtener el índice real del slide (sin loop)
-                                const realIndex = this.realIndex;
+                                // Obtener el índice real del slide
+                                const realIndex = this.activeIndex;
                                 updateBreadcrumb(realIndex);
                             }
                         }
                     });
-                    // Actualizar breadcrumb con el slide inicial
-                    updateBreadcrumb(swiperInstance.realIndex);
+                    // Actualizar breadcrumb con el slide inicial (siempre 0)
+                    updateBreadcrumb(0);
+                } else {
+                    // Si ya existe, resetear al slide inicial
+                    swiperInstance.slideTo(0, 0);
+                    updateBreadcrumb(0);
                 }
             }
 

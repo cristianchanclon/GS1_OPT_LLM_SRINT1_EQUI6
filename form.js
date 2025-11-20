@@ -48,7 +48,7 @@ function seleccionadorpreguntes() {
                 <div class="camp">
                     <label for="eines_nuvol">Utilitzeu eines al núvol?</label>
                     <select id="eines_nuvol" name="eines_nuvol" required>
-                        <option value="">-- Selecciona --</option>
+                        <option value="" disabled selected>-- Selecciona --</option>
                         <option value="sí">Sí</option>
                         <option value="no">No</option>
                         <option value="parcialment">Parcialment</option>
@@ -63,7 +63,7 @@ function seleccionadorpreguntes() {
                 <div class="camp">
                     <label for="pagina_web">Disposeu d'una pàgina web?</label>
                     <select id="pagina_web" name="pagina_web" required>
-                        <option value="">-- Selecciona --</option>
+                        <option value="" disabled selected>-- Selecciona --</option>
                         <option value="sí">Sí</option>
                         <option value="no">No</option>
                     </select>
@@ -72,7 +72,7 @@ function seleccionadorpreguntes() {
                 <div class="camp">
                     <label for="vendes_online">Realitzeu vendes online?</label>
                     <select id="vendes_online" name="vendes_online" required>
-                        <option value="">-- Selecciona --</option>
+                        <option value="" disabled selected>-- Selecciona --</option>
                         <option value="sí">Sí</option>
                         <option value="no">No</option>
                         <option value="implementant">Estem implementant-ho</option>
@@ -105,7 +105,7 @@ function seleccionadorpreguntes() {
                 <div class="camp">
                     <label for="pla_sostenibilitat">Teniu un pla de sostenibilitat?</label>
                     <select id="pla_sostenibilitat" name="pla_sostenibilitat" required>
-                        <option value="">-- Selecciona --</option>
+                        <option value="" disabled selected>-- Selecciona --</option>
                         <option value="sí">Sí</option>
                         <option value="no">No</option>
                         <option value="desenvolupament">En desenvolupament</option>
@@ -120,7 +120,7 @@ function seleccionadorpreguntes() {
                 <div class="camp">
                     <label for="estalvi_energetic">Realitzeu mesures d'estalvi energètic?</label>
                     <select id="estalvi_energetic" name="estalvi_energetic" required>
-                        <option value="">-- Selecciona --</option>
+                        <option value="" disabled selected>-- Selecciona --</option>
                         <option value="sí">Sí</option>
                         <option value="no">No</option>
                         <option value="parcialment">Parcialment</option>
@@ -135,7 +135,7 @@ function seleccionadorpreguntes() {
                 <div class="camp">
                     <label for="residus_selectius">Gestioneu residus de manera selectiva?</label>
                     <select id="residus_selectius" name="residus_selectius" required>
-                        <option value="">-- Selecciona --</option>
+                        <option value="" disabled selected>-- Selecciona --</option>
                         <option value="sí">Sí</option>
                         <option value="no">No</option>
                         <option value="parcialment">Parcialment</option>
@@ -145,7 +145,7 @@ function seleccionadorpreguntes() {
                 <div class="camp">
                     <label for="reduccio_plastics">Reduïu l'ús de plàstics o materials d'un sol ús?</label>
                     <select id="reduccio_plastics" name="reduccio_plastics" required>
-                        <option value="">-- Selecciona --</option>
+                        <option value="" disabled selected>-- Selecciona --</option>
                         <option value="sí">Sí</option>
                         <option value="no">No</option>
                         <option value="començant">Estem començant</option>
@@ -176,14 +176,70 @@ function manejarEnviament(e) {
     e.preventDefault();
 
     const formulari = e.target;
+
+    // Verificar si el formulario ya fue enviado
+    if (formulari.dataset.enviado === "true") {
+        return;
+    }
+
     const formData = new FormData(formulari);
     const data = Object.fromEntries(formData);
 
-    // Validar formulario
+    // Validar que se haya seleccionado un tipo de empresa
+    const tipusSelect = document.getElementById("tipus");
+    if (tipusSelect && (!tipusSelect.value || tipusSelect.value === "")) {
+        tipusSelect.setCustomValidity("Si us plau, selecciona una empresa");
+        tipusSelect.reportValidity();
+        tipusSelect.addEventListener("change", function() {
+            tipusSelect.setCustomValidity("");
+        }, { once: true });
+        return;
+    }
+
+    // Validar formulario HTML5
     if (!formulari.checkValidity()) {
         formulari.reportValidity();
         return;
     }
+
+    // Validación adicional para selectores dinámicos requeridos
+    const selectorsRequerits = [
+        "eines_nuvol",
+        "pagina_web",
+        "vendes_online",
+        "pla_sostenibilitat",
+        "estalvi_energetic",
+        "residus_selectius",
+        "reduccio_plastics"
+    ];
+
+    for (const selectorId of selectorsRequerits) {
+        const selector = document.getElementById(selectorId);
+        if (selector && selector.required && (!selector.value || selector.value === "")) {
+            selector.setCustomValidity("Si us plau, selecciona una opció");
+            selector.reportValidity();
+            selector.addEventListener("change", function() {
+                selector.setCustomValidity("");
+            }, { once: true });
+            return;
+        }
+    }
+
+    // Marcar el formulario como enviado
+    formulari.dataset.enviado = "true";
+
+    // Ocultar el botón inmediatamente antes de mostrar el mensaje
+    const formActions = document.querySelector(".form-actions");
+    if (formActions) {
+        formActions.style.display = "none";
+        formActions.style.visibility = "hidden";
+        formActions.style.opacity = "0";
+        formActions.style.height = "0";
+        formActions.style.overflow = "hidden";
+    }
+
+    // Remover el event listener para evitar reenvíos
+    formulari.removeEventListener("submit", manejarEnviament);
 
     // Mostrar mensaje de éxito
     mostrarMissatgeExit();
@@ -193,12 +249,24 @@ function manejarEnviament(e) {
 }
 
 function mostrarMissatgeExit() {
+    const formulari = document.getElementById("formulari");
     const contenidor = document.getElementById("preguntes");
-    const formActions = document.querySelector(".form-actions");
+    const tipusSelect = document.getElementById("tipus");
 
-    // Ocultar el botón de envío
-    if (formActions) {
-        formActions.style.display = "none";
+    // Deshabilitar completamente el formulario para evitar reenvíos
+    if (formulari) {
+        formulari.style.pointerEvents = "none";
+
+        // Deshabilitar todos los campos del formulario
+        const formFields = formulari.querySelectorAll("input, select, textarea, button");
+        formFields.forEach(field => {
+            field.disabled = true;
+        });
+    }
+
+    // Deshabilitar también el selector de tipo de empresa
+    if (tipusSelect) {
+        tipusSelect.disabled = true;
     }
 
     const missatge = document.createElement("div");
