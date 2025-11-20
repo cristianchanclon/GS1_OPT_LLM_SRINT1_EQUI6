@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ca" class="form-page-html">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+	<title>Montsià30 - Formulari de contacte</title>
+
+	<link rel="icon" type="image/png" href="montsitech.png" />
+	<link rel="stylesheet" href="style.css" />
+	<link rel="stylesheet" href="stylesformcontacte.css" />
+</head>
+
+<body class="form-page">
+	<div id="header-container"></div>
+	<main>
+		<div class="forms-wrapper">
+			<div class="form-container">
+				<div class="form-header">
+					<h1>Formulari de Contacte</h1>
+					<p class="form-subtitle">Contacta amb nosaltres i et respondrem el més aviat possible</p>
+				</div>
+
+				<form id="formulari-contacte">
+					<div class="form-section">
+						<div class="camp">
+							<label for="nom">Nom complet <span class="required">*</span></label>
+							<input type="text" id="nom" name="nom" placeholder="Introdueix el teu nom" required>
+						</div>
+
+						<div class="camp">
+							<label for="email">Correu electrònic <span class="required">*</span></label>
+							<input type="email" id="email" name="email" placeholder="exemple@correu.com" required>
+						</div>
+
+						<div class="camp">
+							<label for="telefon">Telèfon</label>
+							<input type="tel" id="telefon" name="telefon" placeholder="Ex: 123 456 789">
+						</div>
+
+						<div class="camp">
+							<label for="assumpte">Assumpte <span class="required">*</span></label>
+							<select id="assumpte" name="assumpte" required>
+								<option value="">-- Selecciona un assumpte --</option>
+								<option value="digitalitzacio">Consulta sobre Digitalització</option>
+								<option value="sostenibilitat">Consulta sobre Sostenibilitat</option>
+								<option value="general">Consulta general</option>
+								<option value="suport">Suport tècnic</option>
+								<option value="altres">Altres</option>
+							</select>
+						</div>
+
+						<div class="camp">
+							<label for="missatge">Missatge <span class="required">*</span></label>
+							<textarea id="missatge" name="missatge" rows="6"
+								placeholder="Escriu el teu missatge aquí..." required></textarea>
+						</div>
+					</div>
+
+					<div class="form-actions">
+						<button type="submit" class="btn-submit">
+							<span>Enviar missatge</span>
+						</button>
+					</div>
+				</form>
+			</div>
+
+			<div class="form-container">
+				<div class="form-header">
+					<h1>Suggeriments</h1>
+					<p class="form-subtitle">Comparteix les teves idees i suggeriments per millorar el nostre servei</p>
+				</div>
+
+				<form id="formulari-suggeriments">
+					<div class="form-section">
+						<div class="camp">
+							<label for="nom_suggeriment">Nom (opcional)</label>
+							<input type="text" id="nom_suggeriment" name="nom_suggeriment"
+								placeholder="Introdueix el teu nom">
+						</div>
+
+						<div class="camp">
+							<label for="email_suggeriment">Correu electrònic (opcional)</label>
+							<input type="email" id="email_suggeriment" name="email_suggeriment"
+								placeholder="exemple@correu.com">
+						</div>
+
+						<div class="camp">
+							<label for="tipus_suggeriment">Tipus de suggeriment</label>
+							<select id="tipus_suggeriment" name="tipus_suggeriment">
+								<option value="">-- Selecciona un tipus --</option>
+								<option value="millora">Millora de funcionalitat</option>
+								<option value="nou_contingut">Nou contingut</option>
+								<option value="disseny">Disseny i usabilitat</option>
+								<option value="altres">Altres</option>
+							</select>
+						</div>
+
+						<div class="camp">
+							<label for="suggeriment">El teu suggeriment <span class="required">*</span></label>
+							<textarea id="suggeriment" name="suggeriment" rows="8"
+								placeholder="Descriu el teu suggeriment detalladament..." required></textarea>
+						</div>
+					</div>
+
+					<div class="form-actions">
+						<button type="submit" class="btn-submit">
+							<span>Enviar suggeriment</span>
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+		<script src="formcontacte.js"></script>
+	</main>
+	<div id="footer-container"></div>
+	<script src="loadheaderfooter.js"></script>
+</body>
+
+</html>

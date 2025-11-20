@@ -41,6 +41,11 @@ function customizeHeaderTitle() {
   const isFormulari =
     normalizedPath.includes("formulari.html") ||
     normalizedPath.endsWith("formulari");
+  const isContacte =
+    normalizedPath.includes("formconctacte.html") ||
+    normalizedPath.includes("formcontacte.html") ||
+    normalizedPath.endsWith("formconctacte") ||
+    normalizedPath.endsWith("formcontacte");
 
   if (isDigitalitzacio) {
     headerTitle.textContent = "Digitalització";
@@ -48,6 +53,8 @@ function customizeHeaderTitle() {
     headerTitle.textContent = "Sostenibilitat";
   } else if (isIntranet || isFormulari) {
     headerTitle.textContent = "Intranet";
+  } else if (isContacte) {
+    headerTitle.textContent = "Contacte";
   } else {
     headerTitle.textContent = "Montsià30";
   }
