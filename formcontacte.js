@@ -4,29 +4,79 @@ document.addEventListener("DOMContentLoaded", function() {
     const formulariSuggeriments = document.getElementById("formulari-suggeriments");
 
     if (formulariContacte) {
-        formulariContacte.addEventListener("submit", function(e) {
-            manejarEnviament(e, "contacte");
-        });
+        const handlerContacte = function(e) {
+            manejarEnviament(e, "contacte", handlerContacte);
+        };
+        formulariContacte.addEventListener("submit", handlerContacte);
     }
 
     if (formulariSuggeriments) {
-        formulariSuggeriments.addEventListener("submit", function(e) {
-            manejarEnviament(e, "suggeriments");
-        });
+        const handlerSuggeriments = function(e) {
+            manejarEnviament(e, "suggeriments", handlerSuggeriments);
+        };
+        formulariSuggeriments.addEventListener("submit", handlerSuggeriments);
     }
 });
 
-function manejarEnviament(e, tipus) {
+function manejarEnviament(e, tipus, handler) {
     e.preventDefault();
 
     const formulari = e.target;
+
+    // Verificar si el formulario ya fue enviado
+    if (formulari.dataset.enviado === "true") {
+        return;
+    }
+
     const formData = new FormData(formulari);
     const data = Object.fromEntries(formData);
 
-    // Validar formulario
+    // Validar formulario HTML5
     if (!formulari.checkValidity()) {
         formulari.reportValidity();
         return;
+    }
+
+    // Validación específica para selectores requeridos
+    if (tipus === "contacte") {
+        const assumpteSelect = document.getElementById("assumpte");
+        if (assumpteSelect && (!assumpteSelect.value || assumpteSelect.value === "")) {
+            assumpteSelect.setCustomValidity("Si us plau, selecciona un assumpte");
+            assumpteSelect.reportValidity();
+            assumpteSelect.addEventListener("change", function() {
+                assumpteSelect.setCustomValidity("");
+            }, { once: true });
+            return;
+        }
+    } else if (tipus === "suggeriments") {
+        const tipusSuggerimentSelect = document.getElementById("tipus_suggeriment");
+        if (tipusSuggerimentSelect && (!tipusSuggerimentSelect.value || tipusSuggerimentSelect.value === "")) {
+            tipusSuggerimentSelect.setCustomValidity("Si us plau, selecciona un tipus de suggeriment");
+            tipusSuggerimentSelect.reportValidity();
+            tipusSuggerimentSelect.addEventListener("change", function() {
+                tipusSuggerimentSelect.setCustomValidity("");
+            }, { once: true });
+            return;
+        }
+    }
+
+    // Marcar el formulario como enviado
+    formulari.dataset.enviado = "true";
+
+    // Ocultar el botón inmediatamente antes de mostrar el mensaje
+    const formContainer = formulari.closest(".form-container");
+    const formActions = formContainer ? formContainer.querySelector(".form-actions") : null;
+    if (formActions) {
+        formActions.style.display = "none";
+        formActions.style.visibility = "hidden";
+        formActions.style.opacity = "0";
+        formActions.style.height = "0";
+        formActions.style.overflow = "hidden";
+    }
+
+    // Remover el event listener para evitar reenvíos
+    if (handler) {
+        formulari.removeEventListener("submit", handler);
     }
 
     // Mostrar mensaje de éxito
@@ -38,13 +88,18 @@ function manejarEnviament(e, tipus) {
 
 function mostrarMissatgeExit(formulari, tipus) {
     const formContainer = formulari.closest(".form-container");
-    const formActions = formContainer.querySelector(".form-actions");
     const formSection = formContainer.querySelector(".form-section");
 
-    // Ocultar el botón de envío y los campos
-    if (formActions) {
-        formActions.style.display = "none";
-    }
+    // Deshabilitar completamente el formulario para evitar reenvíos
+    formulari.style.pointerEvents = "none";
+
+    // Deshabilitar todos los campos del formulario
+    const formFields = formulari.querySelectorAll("input, select, textarea, button");
+    formFields.forEach(field => {
+        field.disabled = true;
+    });
+
+    // Ocultar los campos del formulario
     if (formSection) {
         formSection.style.display = "none";
     }

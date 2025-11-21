@@ -17,7 +17,7 @@
 		<div class="forms-wrapper">
 			<div class="form-container">
 				<div class="form-header">
-					<h1>Formulari de Contacte</h1>
+					<h1>Contacte</h1>
 					<p class="form-subtitle">Contacta amb nosaltres i et respondrem el més aviat possible</p>
 				</div>
 
@@ -41,7 +41,7 @@
 						<div class="camp">
 							<label for="assumpte">Assumpte <span class="required">*</span></label>
 							<select id="assumpte" name="assumpte" required>
-								<option value="">-- Selecciona un assumpte --</option>
+								<option value="" disabled selected>-- Selecciona un assumpte --</option>
 								<option value="digitalitzacio">Consulta sobre Digitalització</option>
 								<option value="sostenibilitat">Consulta sobre Sostenibilitat</option>
 								<option value="general">Consulta general</option>
@@ -88,7 +88,7 @@
 						<div class="camp">
 							<label for="tipus_suggeriment">Tipus de suggeriment</label>
 							<select id="tipus_suggeriment" name="tipus_suggeriment">
-								<option value="">-- Selecciona un tipus --</option>
+								<option value="" disabled selected>-- Selecciona un tipus --</option>
 								<option value="millora">Millora de funcionalitat</option>
 								<option value="nou_contingut">Nou contingut</option>
 								<option value="disseny">Disseny i usabilitat</option>
@@ -96,11 +96,11 @@
 							</select>
 						</div>
 
-						<div class="camp">
-							<label for="suggeriment">El teu suggeriment <span class="required">*</span></label>
-							<textarea id="suggeriment" name="suggeriment" rows="8"
-								placeholder="Descriu el teu suggeriment detalladament..." required></textarea>
-						</div>
+					<div class="camp">
+						<label for="suggeriment">El teu suggeriment <span class="required">*</span></label>
+						<textarea id="suggeriment" name="suggeriment" rows="6"
+							placeholder="Descriu el teu suggeriment detalladament..." required></textarea>
+					</div>
 					</div>
 
 					<div class="form-actions">

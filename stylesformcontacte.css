@@ -9,12 +9,27 @@
 	margin: 0 auto;
 	padding: 0 1.5rem;
 	flex-wrap: wrap;
+	align-items: stretch;
+	/* Asegura que ambos contenedores tengan la misma altura */
 }
 
 .forms-wrapper .form-container {
 	flex: 1;
 	min-width: 300px;
 	max-width: 800px;
+	display: flex;
+	flex-direction: column;
+	/* Permite que el contenido se distribuya verticalmente */
+}
+
+.forms-wrapper .form-container form {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+}
+
+.forms-wrapper .form-container .form-section {
+	flex: 1;
 }
 
 /* Mostrar el botón de envío siempre visible */
